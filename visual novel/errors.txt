@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 21: expected a keyword argument or end of line.
+    action openinventory = True
+                         ^
+
+Ren'Py Version: Ren'Py 8.2.0.24012702
+Mon Feb  5 11:47:19 2024
