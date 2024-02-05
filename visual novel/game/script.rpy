@@ -18,25 +18,27 @@ define secte = Character('Personnes masquées', color="#a5a5a5")
 
 
 transform pos_sac:
-    xzoom .2 yzoom .2
+    xzoom .3 yzoom .3
     xpos .0 ypos .1
+init:
+    $ open = False
 
-
-
-#init python:
-#    class Item:
-#        def __init__(self, name, image):
-#            self.name = name
-#            self.image = image
-
-#init:
-    #$ inventaire = []
-    #$ sac = Item("sac", "sac.jpg")
+init python:
+    class Item:
+        def __init__(self, name, image):
+            self.name = name
+            self.image = image
+        def getPNG(self):
+            return self.image
+    kit_soin = Item("Kit de soin", medkit.png)
+    inventaire = [kit_soin]
+    sac = Item("sac", sac.jpg)
 
 
 # Le jeu commence ici
 label start:
     scene avion
+<<<<<<< Updated upstream
     "On approche du site."
     com "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
     M "OK! Souhaite-moi bonne chance!"
@@ -52,6 +54,10 @@ label start:
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon tééphone dans l'avion. Je vais attendre q'ils partent pour descendre."
     jump pendaison
+=======
+    show screen sac
+    "debut"
+>>>>>>> Stashed changes
     jump QTE_reussi
     jump QTE_echoue
 
@@ -59,10 +65,14 @@ label pendaison:
     
 
 label QTE_reussi:
+<<<<<<< Updated upstream
     "Le rituel se finit et les personnes partent sans avoir remarqué Marc."
     M "Il faut que je réussisse à descedre de l'arbre sans me blesser."
     M "Je vais devoir passer par une de ses deux branches. La plus fine me permettrait de descendre plus rapidement, mais la plus large me paraît plus solide."
     M "Laquelle vais-je choisir?"
+=======
+    "fin"
+>>>>>>> Stashed changes
     jump blesse
     jump pas_blesse
 
@@ -117,8 +127,12 @@ label reveil_cabane:
     jump cabane_rencontre_A
 
 label cabane_rencontre_A:
+<<<<<<< Updated upstream
 
     jump 
+=======
+#    jump 
+>>>>>>> Stashed changes
 
 label cabane:
     "Il aperçoit une cabane isolée"
@@ -209,16 +223,24 @@ label mettre_masque:
 
 
 label revelation_policier:
+<<<<<<< Updated upstream
     jump choix_demanteler_secten
     jump sortir_village
 
 label choix_demanteler_secte:
     jump fouiller_cabane
+=======
+#    jump
+
+label choix_demanteler_secte:
+#    jump
+>>>>>>> Stashed changes
 
 label fouiller_cabane:
-    jump
+#    jump
 
 label sortir_village:
+<<<<<<< Updated upstream
     jump choix_fuite
 
 label choix_fuite:
@@ -226,3 +248,35 @@ label choix_fuite:
 
 label reprendre_mission:
     jump 
+=======
+#    jump
+
+label choix_fuite:
+#    jump
+
+label reprendre_mission:
+#    jump
+
+
+
+
+
+
+
+
+
+#image button
+screen sac:
+    imagebutton:
+        idle "sac.jpg"
+        at pos_sac
+        if open==False:
+            action [Show("inventory"), SetVariable("open", True)]
+        else:
+            action [Hide("inventory"), SetVariable("open", False)]
+
+screen inventory:
+    image "inventory.png" at truecenter
+    if len(inventaire)!=0 : 
+        image inventaire[0].getPNG()
+>>>>>>> Stashed changes
