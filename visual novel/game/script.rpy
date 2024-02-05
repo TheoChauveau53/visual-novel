@@ -12,21 +12,33 @@ transform pos_sac:
 
 
 
-init python:
-    class Item:
-        def __init__(self, name, image):
-            self.name = name
-            self.image = image
+#init python:
+#    class Item:
+#        def __init__(self, name, image):
+#            self.name = name
+#            self.image = image
 
-$ inventaire = []
-$ sac = Item("sac", "sac.jpg")
+#init:
+    #$ inventaire = []
+    #$ sac = Item("sac", "sac.jpg")
+
 
 # Le jeu commence ici
 label start:
     scene avion
-    
-    e "Vous venez de créer un nouveau jeu Ren'Py."
+    show screen sac
+    "debut"
 
-    e "Après avoir ajouté une histoire, des images et de la musique, vous pourrez le présenter au monde entier !"
+label end:
+    "fin"
     
-    return
+
+
+#image button
+screen sac:
+    imagebutton:
+        idle "sac.jpg"
+        at pos_sac
+        action Show("inventory")
+screen inventory:
+    image "inventory.png"

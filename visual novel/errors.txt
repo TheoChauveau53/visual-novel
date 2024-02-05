@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 21: expected a keyword argument or end of line.
-    action openinventory = True
-                         ^
+File "game/script.rpy", line 21: init statement expects a non-empty block.
+    init:
+         ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Mon Feb  5 11:47:19 2024
+Mon Feb  5 12:38:58 2024
