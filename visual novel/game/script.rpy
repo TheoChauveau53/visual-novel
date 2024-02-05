@@ -30,9 +30,8 @@ init python:
             self.image = image
         def getPNG(self):
             return self.image
-    kit_soin = Item("Kit de soin", medkit.png)
-    inventaire = [kit_soin]
-    sac = Item("sac", sac.jpg)
+    kit_soin = Item("Kit de soin", "medkit.png")
+    inventaire = []
 
 
 # Le jeu commence ici
@@ -53,7 +52,7 @@ label start:
     M "Je crois que je n'aurais jamais du ici. Il faut que j'appele le pilote pour le prévenir de ce qu'il se passe ici."
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon tééphone dans l'avion. Je vais attendre q'ils partent pour descendre."
-    jump pendaison
+    #jump pendaison
     jump QTE_reussi
     jump QTE_echoue
 
@@ -65,8 +64,14 @@ label QTE_reussi:
     M "Il faut que je réussisse à descedre de l'arbre sans me blesser."
     M "Je vais devoir passer par une de ses deux branches. La plus fine me permettrait de descendre plus rapidement, mais la plus large me paraît plus solide."
     M "Laquelle vais-je choisir?"
-    jump blesse
-    jump pas_blesse
+    menu:
+        "Que faites-vous ?"
+
+        "se prendre une branche":        
+            jump blesse
+
+        "pas la prendre":
+            jump pas_blesse
 
 label QTE_echoue:
     "Crack!"
@@ -223,10 +228,10 @@ label sortir_village:
     jump choix_fuite
 
 label choix_fuite:
-    jump 
+    #jump 
 
 label reprendre_mission:
-    jump 
+    #jump 
 
 
 
