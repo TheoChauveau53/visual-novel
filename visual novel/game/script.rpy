@@ -38,7 +38,7 @@ init python:
 # Le jeu commence ici
 label start:
     scene avion
-<<<<<<< Updated upstream
+    show screen sac
     "On approche du site."
     com "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
     M "OK! Souhaite-moi bonne chance!"
@@ -54,10 +54,6 @@ label start:
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon tééphone dans l'avion. Je vais attendre q'ils partent pour descendre."
     jump pendaison
-=======
-    show screen sac
-    "debut"
->>>>>>> Stashed changes
     jump QTE_reussi
     jump QTE_echoue
 
@@ -65,14 +61,10 @@ label pendaison:
     
 
 label QTE_reussi:
-<<<<<<< Updated upstream
     "Le rituel se finit et les personnes partent sans avoir remarqué Marc."
     M "Il faut que je réussisse à descedre de l'arbre sans me blesser."
     M "Je vais devoir passer par une de ses deux branches. La plus fine me permettrait de descendre plus rapidement, mais la plus large me paraît plus solide."
     M "Laquelle vais-je choisir?"
-=======
-    "fin"
->>>>>>> Stashed changes
     jump blesse
     jump pas_blesse
 
@@ -127,12 +119,7 @@ label reveil_cabane:
     jump cabane_rencontre_A
 
 label cabane_rencontre_A:
-<<<<<<< Updated upstream
-
-    jump 
-=======
 #    jump 
->>>>>>> Stashed changes
 
 label cabane:
     "Il aperçoit une cabane isolée"
@@ -223,24 +210,16 @@ label mettre_masque:
 
 
 label revelation_policier:
-<<<<<<< Updated upstream
     jump choix_demanteler_secten
     jump sortir_village
 
 label choix_demanteler_secte:
     jump fouiller_cabane
-=======
-#    jump
-
-label choix_demanteler_secte:
-#    jump
->>>>>>> Stashed changes
 
 label fouiller_cabane:
 #    jump
 
 label sortir_village:
-<<<<<<< Updated upstream
     jump choix_fuite
 
 label choix_fuite:
@@ -248,19 +227,6 @@ label choix_fuite:
 
 label reprendre_mission:
     jump 
-=======
-#    jump
-
-label choix_fuite:
-#    jump
-
-label reprendre_mission:
-#    jump
-
-
-
-
-
 
 
 
@@ -279,4 +245,3 @@ screen inventory:
     image "inventory.png" at truecenter
     if len(inventaire)!=0 : 
         image inventaire[0].getPNG()
->>>>>>> Stashed changes
