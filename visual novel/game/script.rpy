@@ -144,7 +144,7 @@ label pas_blesse:
     jump balade_foret
 
 label balade_foret:
-    scene foret_claire Dissolve(.5)
+    scene foret_claire with Dissolve(.5)
     M "Bon, je prend quel chemin maintenant."
     menu:
         "Que faites-vous ?"
@@ -154,7 +154,7 @@ label balade_foret:
             jump voir_village
 
 label voir_village:
-    scene EntreeVillage Dissolve(.5)
+    scene EntreeVillage with Dissolve(.5)
     M "Oh! Un village! Est-ce qu'ils savent ce qui se passe dans leur forêt?"
     M "Est-ce que j'y vais?"
     menu:
@@ -165,7 +165,7 @@ label voir_village:
             jump balade_foret
 
 label entrer_village:
-    scene EntreeVillage Dissolve(.5)
+    scene EntreeVillage with Dissolve(.5)
     M "C'est un très beau village. Bon, j'y vais."
     "Marc se rapproche et une alarme se déclenche directement."
     M "Mince! Une alarme! Il me faut fuire!"
@@ -311,7 +311,8 @@ label revelation_policier:
             jump sortir_village
 
 label demanteler_secte:
-    scene bureau with Dissolve(.5)
+    scene bureau with Dissolve(.5) 
+    # trouve le medkit
     jump voir_maire
     
 
