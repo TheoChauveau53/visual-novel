@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 20: expecting name after dot.
-    xpos .1.5 ypos .2
-            ^
+File "game/script.rpy", line 259: choice menuitem expects a non-empty block.
+    "Continuer de fouiller la cage":
+                                    ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Tue Feb  6 13:19:17 2024
+Tue Feb  6 13:39:25 2024
