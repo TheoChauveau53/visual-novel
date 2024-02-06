@@ -50,7 +50,7 @@ label start:
     M "Mais qu'est ce qu'il se passe là-bas?! Pourquoi il y a quelqu'un dans le feu ?!"
     M "Je crois que je n'aurais jamais du ici. Il faut que j'appele le pilote pour le prévenir de ce qu'il se passe ici."
     "Essaie de fouiller ses poches."
-    M "Et merde! J'ai oublié mon tééphone dans l'avion. Je vais attendre q'ils partent pour descendre."
+    M "Et merde! J'ai oublié mon téléphone dans l'avion. Je vais attendre q'ils partent pour descendre."
     jump pendaison
     jump QTE_reussi
     jump QTE_echoue
