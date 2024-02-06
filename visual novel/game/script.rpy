@@ -1,4 +1,4 @@
-# Vous pouvez placer le script de votre jeu dans ce fichier.
+﻿# Vous pouvez placer le script de votre jeu dans ce fichier.
 
 # Déclarez sous cette ligne les images, avec l'instruction 'image'
 # ex: image eileen heureuse = "eileen_heureuse.png"
@@ -23,6 +23,8 @@ transform pos_sac:
 init:
     $ open = False
     $ nbr_forcage = 0
+    $ nbr_morceaux_mince = 0
+    $ policier_mort = False
 
 init python:
     class Item:
@@ -37,14 +39,14 @@ init python:
 
 # Le jeu commence ici
 label start:
-    scene avion
+    scene avion with Dissolve(.5)
     show screen sac
     "On approche du site."
     com "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
     M "OK! Souhaite-moi bonne chance!"
     com "Bonne chance! Aterris pas dans un arbre! Ah ah!"
     M "C'est ça! Prend-moi pour un débutant tant que tu y es!"
-    scene parachute
+    scene parachute with Dissolve(.5)
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
     M "Tiens. On m'avait dit que le forêt étais inhabité."
@@ -58,6 +60,8 @@ label start:
     jump QTE_echoue
 
 label pendaison:
+    "Marc s'est pendu à une branche."
+    jump start
     
 
 label QTE_reussi:
@@ -138,7 +142,7 @@ label reveil_cabane:
     jump cabane_rencontre_A
 
 label cabane_rencontre_A:
-#    jump 
+    jump revelation_policier 
 
 label cabane:
     "Il aperçoit une cabane isolée"
@@ -208,8 +212,16 @@ label fouiller_cage:
     M "Je n'arrive pas à lire la suite"
     M "Ils forcent les prisonniers à manger des outils! C'est horrible!"
     M "Si j'arrive à récupérer les autres morceaux de la pince, je devrais réussir à couper le cadenas"
-    jump pince_echoue
-    jump pince_reussi
+    menu:
+        "Que faites-vous?"
+        "Continuer de fouiller la cage":
+        "Sortir de la cage":
+            if nbr_morceaux_mince ==3:
+                jump pince_reussi
+            else:
+                jump pince_echoue
+        
+
 
 label pince_echoue:
     B "Eh! Qu'est ce que tu fais avec une pince toi?!"
@@ -236,25 +248,52 @@ label mettre_masque:
 
 
 label revelation_policier:
-    jump choix_demanteler_secten
-    jump sortir_village
+    menu:
+        "Que faites-vous?"
+        "Aider le policier à démanteler la secte":
+            jump demanteler_secten
+        "Sortir du village":
+            jump sortir_village
 
-label choix_demanteler_secte:
-    jump fouiller_cabane
+label demanteler_secte:
+    jump voir_maire
+    
 
-label fouiller_cabane:
-#    jump
+
 
 label sortir_village:
-    jump choix_fuite
+    jump fuite
 
-label choix_fuite:
-    #jump 
+label fuite:
+    "Marc a decidé de s'enfuir."
+    "Il est resté en vie."
+    return
 
 label reprendre_mission:
-    #jump 
+    jump voir_maire
 
+label voir_maire:
+    jump trouve_a_temps
+    jump trouve_pas_a_temps
 
+label trouve_a_temps:
+    if policier_mort :
+        jump se_cacher
+    else:
+        jump info_eglise
+
+label trouve_pas_a_temps:
+    jump voir_maire
+
+label se_cacher:
+    jump reussi_cacher
+    jump pas_reussi_cacher
+
+label reussi_cacher:
+
+label pas_reussi_cacher:
+
+label info_eglise:
 
 
 #image button
