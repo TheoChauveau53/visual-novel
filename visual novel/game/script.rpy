@@ -22,6 +22,7 @@ transform pos_sac:
     xpos .0 ypos .1
 init:
     $ open = False
+    $ nbr_forcage = 0
 
 init python:
     class Item:
@@ -43,11 +44,11 @@ label start:
     M "OK! Souhaite-moi bonne chance!"
     com "Bonne chance! Aterris pas dans un arbre! Ah ah!"
     M "C'est ça! Prend-moi pour un débutant tant que tu y es!"
-    scene #atteris dans l'arbre
+    scene parachute
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
     M "Tiens. On m'avait dit que le forêt étais inhabité."
-    scene #sarifice
+    scene #sacrifice
     M "Mais qu'est ce qu'il se passe là-bas?! Pourquoi il y a quelqu'un dans le feu ?!"
     M "Je crois que je n'aurais jamais du ici. Il faut que j'appele le pilote pour le prévenir de ce qu'il se passe ici."
     "Essaie de fouiller ses poches."
@@ -67,10 +68,10 @@ label QTE_reussi:
     menu:
         "Que faites-vous ?"
 
-        "se prendre une branche":        
+        "Choisir la branche large":        
             jump blesse
 
-        "pas la prendre":
+        "Choisir la branche fine":
             jump pas_blesse
 
 label QTE_echoue:
@@ -83,30 +84,43 @@ label QTE_echoue:
     jump dans_la_cage
 
 label blesse:
-    M "Aïe! Je me suis tordu la cheville. J'ai jamais de chance dqns la vie, moi!"
+    M "Aïe! Je me suis tordu la cheville. J'ai jamais de chance dans la vie, moi!"
+    $ blesse = True
     jump balade_foret
 
 label pas_blesse:
     M "Ouf! C'était juste. Bon, maintenant je dois trouver un endroit pour me cacher et soigner ma cheville."
+    $ blesse = False
     jump balade_foret
 
 label balade_foret:
     M "Bon, je prend quel chemin maintenant."
-    jump voir_village
-    jump cabane
+    menu:
+        "Que faites-vous ?"
+        "Aller vers la cabane":        
+            jump cabane
+        "Aller vers le village":
+            jump voir_village
 
 label voir_village:
-    M "Oh! Un village! Est-ce qu'ils savent ce qui se passe dans leurs forêt?"
+    M "Oh! Un village! Est-ce qu'ils savent ce qui se passe dans leur forêt?"
     M "Est-ce que j'y vais?"
-    jump entrer_village
-    jump balade_foret
+    menu:
+        "Que faites-vous ?"
+        "Entrer dans le village":        
+            jump entrer_village
+        "Faire demi-tour":
+            jump balade_foret
 
 label entrer_village:
     M "C'est un très beau village. Bon, j'y vais."
     "Marc se rapproche et une alarme se déclenche directement."
     M "Mince! Une alarme! Il me faut fuire!"
-    jump fuite_cabane
-    jump capture_entree_village
+    if blesse == True :
+        jump capture_entree_village
+    if blesse == False :
+        jump fuite_cabane
+    
 
 label fuite_cabane:
     "Marc aperçoit une cabane dans la forêt."
@@ -160,17 +174,24 @@ label cadavre_cage:
     "Marc examine la cage dans laquelle il a été enfermé."
     "Il remarque un cadavre à ses pieds."
     M "Ah! Mais! Qu'est ce qu'il fait là!"
-
-    jump forcer_cage
-    jump fouiller_cage
+    menu:
+        "Que faites-vous ?"
+        "Forcer la cage":        
+            jump forcer_cage
+        "Fouiller la cage":
+            jump fouiller_cage
+    
+    
 
 label forcer_cage:
     M "La cage ne m'a pas l'air bien solide. Je vais essayer de sortir en forçant la serrure."
     "Marc secoue la porte de sa cage avec toute sa force."
     B "Eh toi! Qu'es-ce que tu assaies de faire!"
     M "Mince, On m'a vu, je ne pourrais pas sortir."
-    jump mort_cage
-    jump dans_la_cage
+    if nbr_forcage==2:
+        jump mort_cage
+    else:
+        jump dans_la_cage
 
 label mort_cage:
     B "Bon, ça suffit! Tu commences à m'énerver!"
@@ -183,7 +204,7 @@ label fouiller_cage:
     M "La lime est trop fine, je ne pourrais pas couper les barreaux avec."
     "Marc aperçoit un livre sous le cadavre."
     "Du sang couvre les pages du livre mais un morceau de texte reste lisible."
-    "Ces personnes sont complètement folles, ils nous oblige à manger des outils en pièce détaché, ça va finir par me tuer. J'ai déjà été obliger ..."
+    "Ces personnes sont complètement folles, ils nous oblige à manger des outils en pièce détaché, ça va finir par me tuer. J'ai déjà été obligé ..."
     M "Je n'arrive pas à lire la suite"
     M "Ils forcent les prisonniers à manger des outils! C'est horrible!"
     M "Si j'arrive à récupérer les autres morceaux de la pince, je devrais réussir à couper le cadenas"
@@ -239,7 +260,7 @@ label reprendre_mission:
 #image button
 screen sac:
     imagebutton:
-        idle "sac.jpg"
+        idle "sac.png"
         at pos_sac
         if open==False:
             action [Show("inventory"), SetVariable("open", True)]
