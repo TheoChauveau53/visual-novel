@@ -62,6 +62,8 @@ init:
     $ nbr_forcage = 0
     $ nbr_morceaux_mince = 0
     $ policier_mort = False
+    $ noeud_clique = 1
+    $ time = 5
 
 init python:
     class Item:
@@ -95,10 +97,14 @@ label start:
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon téléphone dans l'avion. Je vais attendre q'ils partent pour descendre."
     M "Je vais essayer de défaire mes liens en attendant."
-
-    jump pendaison
-    jump QTE_reussi
-    jump QTE_echoue
+    show screen noeud
+    show screen countdown with Pause(5)
+    if noeud_clique<1:
+        jump pendaison
+    if 0<noeud_clique<6:
+        jump QTE_reussi
+    if 5<noeud_clique:
+        jump QTE_echoue
 
 label pendaison:
     scene #branche with Dissolve(.5)
@@ -268,7 +274,7 @@ label fouiller_cage:
     M "Si j'arrive à récupérer les autres morceaux de la pince, je devrais réussir à couper le cadenas"
     menu:
         "Que faites-vous?"
-        "Continuer de fouiller la cage":
+        #"Continuer de fouiller la cage":
         "Sortir de la cage":
             if nbr_morceaux_mince ==3:
                 jump pince_reussi
@@ -368,7 +374,19 @@ screen sac:
         else:
             action [Hide("inventory"), SetVariable("open", False)]
 
+screen noeud:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud"),SetVariable("noeud_clique", noeud_clique+1)]
+
 screen inventory:
     image "inventory.png" at truecenter
     if len(inventaire)!=0 : 
         image inventaire[0].getPNG() at pos_inv1
+
+screen countdown:
+    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Hide("noeud")])
+    if time <= 3:
+        text str(time) xpos .15 ypos .1 color "#FF0000" 
+    else:
+        text str(time) xpos .15 ypos .1 

@@ -2,9 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 259: choice menuitem expects a non-empty block.
+<<<<<<< Updated upstream
+File "game/script.rpy", line 271: choice menuitem expects a non-empty block.
+=======
+File "game/script.rpy", line 261: choice menuitem expects a non-empty block.
+>>>>>>> Stashed changes
     "Continuer de fouiller la cage":
                                     ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Tue Feb  6 13:39:25 2024
+<<<<<<< Updated upstream
+Tue Feb  6 15:18:12 2024
+=======
+Tue Feb  6 14:26:21 2024
+>>>>>>> Stashed changes
