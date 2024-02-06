@@ -84,25 +84,30 @@ label start:
     com "Bonne chance! Aterris pas dans un arbre! Ah ah!"
     M "C'est ça! Prend-moi pour un débutant tant que tu y es!"
     scene parachute with Dissolve(.5)
+    with Pause(5)
+    scene #branche with Dissolve(.5)
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
     M "Tiens. On m'avait dit que le forêt étais inhabité."
-    scene #sacrifice
+    scene sacrifice with Dissolve(.5)
     M "Mais qu'est ce qu'il se passe là-bas?! Pourquoi il y a quelqu'un dans le feu ?!"
     M "Je crois que je n'aurais jamais du ici. Il faut que j'appele le pilote pour le prévenir de ce qu'il se passe ici."
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon téléphone dans l'avion. Je vais attendre q'ils partent pour descendre."
+    M "Je vais essayer de défaire mes liens en attendant."
 
     jump pendaison
     jump QTE_reussi
     jump QTE_echoue
 
 label pendaison:
+    scene #branche with Dissolve(.5)
     "Marc s'est pendu à une branche."
     jump start
     
 
 label QTE_reussi:
+    scene sacrifice with Dissolve(.5)
     "Le rituel se finit et les personnes partent sans avoir remarqué Marc."
     M "Il faut que je réussisse à descedre de l'arbre sans me blesser."
     M "Je vais devoir passer par une de ses deux branches. La plus fine me permettrait de descendre plus rapidement, mais la plus large me paraît plus solide."
@@ -117,26 +122,29 @@ label QTE_reussi:
             jump pas_blesse
 
 label QTE_echoue:
+    scene sacrifice with Dissolve(.5)
     "Crack!"
     "Les personnes autour du feu regarde Marc et commence a courir vers lui."
     M "Merde! J'ai fais trop de bruit, il faut que je parte de là en vitesse."
     "Les personnes masquées se jettent sur Marc."
-    M "Non! Arrêtez! Cassez-vous qu'est-ce que vous me voulez!"
+    M "Non! Arrêtez! Cassez-vous! Qu'est-ce que vous me voulez!"
     "Marc s'évanouit."
     jump dans_la_cage
 
 label blesse:
+    scene foret_claire with Dissolve(.5)
     M "Aïe! Je me suis tordu la cheville. J'ai jamais de chance dans la vie, moi!"
     $ blesse = True
     jump balade_foret
 
 label pas_blesse:
+    scene foret_claire with Dissolve(.5)
     M "Ouf! C'était juste. Bon, maintenant je dois trouver un endroit pour me cacher et soigner ma cheville."
     $ blesse = False
     jump balade_foret
 
 label balade_foret:
-    scene foret_claire
+    scene foret_claire Dissolve(.5)
     M "Bon, je prend quel chemin maintenant."
     menu:
         "Que faites-vous ?"
@@ -146,7 +154,7 @@ label balade_foret:
             jump voir_village
 
 label voir_village:
-    scene EntreeVillage
+    scene EntreeVillage Dissolve(.5)
     M "Oh! Un village! Est-ce qu'ils savent ce qui se passe dans leur forêt?"
     M "Est-ce que j'y vais?"
     menu:
@@ -157,7 +165,7 @@ label voir_village:
             jump balade_foret
 
 label entrer_village:
-    scene EntreeVillage
+    scene EntreeVillage Dissolve(.5)
     M "C'est un très beau village. Bon, j'y vais."
     "Marc se rapproche et une alarme se déclenche directement."
     M "Mince! Une alarme! Il me faut fuire!"
@@ -168,7 +176,7 @@ label entrer_village:
     
 
 label fuite_cabane:
-    scene
+    scene lit with Dissolve(.5)
     "Marc aperçoit une cabane dans la forêt."
     M "Vite! Une cabane! il faut que j'aille me réfugier là-bas."
     "Il rentre dans la cabane."
@@ -178,21 +186,25 @@ label fuite_cabane:
     jump reveil_cabane
 
 label reveil_cabane:
+    scene bureau with Dissolve(.5)
     "Marc se réveil attaché a une chaise."
     M "Qu'est-ce qu'il se passe! Pourquoi je suis attaché ?!"
     A "Qu'est-ce que vous faites chez moi?"
     jump cabane_rencontre_A
 
 label cabane_rencontre_A:
+    scene bureau with Dissolve(.5)
     jump revelation_policier 
 
 label cabane:
+    scene lit with Dissolve(.5)
     "Il aperçoit une cabane isolée"
     M "Tiens! Une cabane. Elle n'a pas l'air d'être habitée."
     M "Je vais essayer de me reposer un peu. Je vais me mettre sous le lit au cas où."
     jump reveil_cabane
 
 label capture_entree_village:
+    scene EntreeVillage with Dissolve(.5)
     "Marc se déplace lentement à cause de sa blessure"
     M "Merde! Il gagne du terrain sur moi!"
     "Il se fait attraper et s'évanouit"
@@ -290,6 +302,7 @@ label mettre_masque:
 
 
 label revelation_policier:
+    scene bureau with Dissolve(.5)
     menu:
         "Que faites-vous?"
         "Aider le policier à démanteler la secte":
@@ -298,20 +311,26 @@ label revelation_policier:
             jump sortir_village
 
 label demanteler_secte:
+    scene bureau with Dissolve(.5)
     jump voir_maire
     
 
 
 
 label sortir_village:
+    scene EntreeVillage with Dissolve(.5)
     jump fuite
 
 label fuite:
+    scene foret_sombre with Dissolve(.5)
     "Marc a decidé de s'enfuir."
     "Il est resté en vie."
     return
 
 label reprendre_mission:
+    scene bureau with Dissolve(.5)
+    scene lit with Dissolve(.5)
+    scene bureau with Dissolve(.5)
     jump voir_maire
 
 label voir_maire:
