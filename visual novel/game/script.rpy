@@ -1,9 +1,3 @@
-﻿# Vous pouvez placer le script de votre jeu dans ce fichier.
-
-# Déclarez sous cette ligne les images, avec l'instruction 'image'
-# ex: image eileen heureuse = "eileen_heureuse.png"
-
-# Déclarez les personnages utilisés dans le jeu.
 define com = Character('Pilote', color="#5574da")
 define M = Character('Marc', color="#ad0d0d")
 define B = Character('Sélène Garde de la cage', color="#473439")
