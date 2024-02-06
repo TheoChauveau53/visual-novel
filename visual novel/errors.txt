@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 19: transform statement expects a non-empty block.
-    transform pos_inv1:
-                       ^
+File "game/script.rpy", line 20: expecting name after dot.
+    xpos .1.5 ypos .2
+            ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Mon Feb  5 16:51:06 2024
+Tue Feb  6 13:19:17 2024

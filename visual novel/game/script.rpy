@@ -16,6 +16,43 @@ define secte = Character('Personnes masquées', color="#a5a5a5")
 
 
 
+transform pos_inv1:
+    xpos 0.155 ypos .2
+transform pos_inv2:
+    xpos 0.27 ypos .2
+transform pos_inv3:
+    xpos 0.385 ypos .2
+transform pos_inv4:
+    xpos 0.5 ypos .2
+transform pos_inv5:
+    xpos 0.615 ypos .2
+transform pos_inv6:
+    xpos 0.73 ypos .2
+transform pos_inv7:
+    xpos 0.155 ypos .4
+transform pos_inv8:
+    xpos 0.27 ypos .4
+transform pos_inv9:
+    xpos 0.385 ypos .4
+transform pos_inv10:
+    xpos 0.5 ypos .4
+transform pos_inv11:
+    xpos 0.615 ypos .4
+transform pos_inv12:
+    xpos 0.73 ypos .4
+transform pos_inv13:
+    xpos 0.155 ypos .6
+transform pos_inv14:
+    xpos 0.27 ypos .6
+transform pos_inv15:
+    xpos 0.385 ypos .6
+transform pos_inv16:
+    xpos 0.5 ypos .6
+transform pos_inv17:
+    xpos 0.615 ypos .6
+transform pos_inv18:
+    xpos 0.73 ypos .6
+
 
 transform pos_sac:
     xzoom .3 yzoom .3
@@ -34,7 +71,7 @@ init python:
         def getPNG(self):
             return self.image
     kit_soin = Item("Kit de soin", "medkit.png")
-    inventaire = []
+    inventaire = [kit_soin]
 
 
 # Le jeu commence ici
@@ -55,6 +92,7 @@ label start:
     M "Je crois que je n'aurais jamais du ici. Il faut que j'appele le pilote pour le prévenir de ce qu'il se passe ici."
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon téléphone dans l'avion. Je vais attendre q'ils partent pour descendre."
+
     jump pendaison
     jump QTE_reussi
     jump QTE_echoue
@@ -98,6 +136,7 @@ label pas_blesse:
     jump balade_foret
 
 label balade_foret:
+    scene foret_claire
     M "Bon, je prend quel chemin maintenant."
     menu:
         "Que faites-vous ?"
@@ -107,6 +146,7 @@ label balade_foret:
             jump voir_village
 
 label voir_village:
+    scene EntreeVillage
     M "Oh! Un village! Est-ce qu'ils savent ce qui se passe dans leur forêt?"
     M "Est-ce que j'y vais?"
     menu:
@@ -117,6 +157,7 @@ label voir_village:
             jump balade_foret
 
 label entrer_village:
+    scene EntreeVillage
     M "C'est un très beau village. Bon, j'y vais."
     "Marc se rapproche et une alarme se déclenche directement."
     M "Mince! Une alarme! Il me faut fuire!"
@@ -127,6 +168,7 @@ label entrer_village:
     
 
 label fuite_cabane:
+    scene
     "Marc aperçoit une cabane dans la forêt."
     M "Vite! Une cabane! il faut que j'aille me réfugier là-bas."
     "Il rentre dans la cabane."
@@ -309,4 +351,4 @@ screen sac:
 screen inventory:
     image "inventory.png" at truecenter
     if len(inventaire)!=0 : 
-        image inventaire[0].getPNG()
+        image inventaire[0].getPNG() at pos_inv1
