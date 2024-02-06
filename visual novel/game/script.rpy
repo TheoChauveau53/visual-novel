@@ -58,6 +58,7 @@ init:
     $ policier_mort = False
     $ noeud_clique = 1
     $ time = 5
+    $ end = False
 
 init python:
     class Item:
@@ -93,11 +94,11 @@ label start:
     M "Je vais essayer de défaire mes liens en attendant."
     show screen noeud
     show screen countdown with Pause(5)
-    if noeud_clique<1:
+    if noeud_clique<1 and end == True:
         jump pendaison
-    if 0<noeud_clique<6:
+    if 0<noeud_clique<6 and end == True:
         jump QTE_reussi
-    if 5<noeud_clique:
+    if 5<noeud_clique and end == True:
         jump QTE_echoue
 
 label pendaison:
@@ -379,8 +380,8 @@ screen inventory:
         image inventaire[0].getPNG() at pos_inv1
 
 screen countdown:
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Hide("noeud")])
+    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Hide("noeud"),SetVariable("end",True)])
     if time <= 3:
-        text str(time) xpos .15 ypos .1 color "#FF0000" 
+        text str(time) color "#FF0000" 
     else:
-        text str(time) xpos .15 ypos .1 
+        text str(time)
