@@ -10,7 +10,7 @@ define secte = Character('Personnes masquées', color="#a5a5a5")
 
 
 transform pos_perso:
-    xpos .0 ypos .2
+    xpos 0.1 ypos .2
 transform pos_inv1:
     xpos 0.155 ypos .2
 transform pos_inv2:
@@ -76,18 +76,22 @@ init python:
 # Le jeu commence ici
 label start:
     scene avion with Dissolve(.5)
-    show marccc at pos_perso
+   
     show screen sac
     "On approche du site."
     com "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
+    show marccc at pos_perso
     M "OK! Souhaite-moi bonne chance!"
     com "Bonne chance! Atterris pas dans un arbre! Ah ah!"
+    show marccc at pos_perso
     M "C'est ça! Prend-moi pour un débutant tant que tu y es!"
     scene parachute with Dissolve(.5)
     $ renpy.pause(5.0, hard=True)
     scene #branche with Dissolve(.5)
+    show marccc at pos_perso
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
+    show marccc at pos_perso
     M "Tiens. On ne m'avait pas dit que la forêt étais inhabité?"
     scene sacrifice with Dissolve(.5)
     M "Mais... Mais qu'est ce qu'il se passe là-bas?! Mais qu'est ce que... Il y a quelqu'un dans le feu ?!"
