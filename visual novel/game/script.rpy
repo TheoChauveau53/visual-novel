@@ -77,7 +77,7 @@ label start:
     "On approche du site."
     com "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
     M "OK! Souhaite-moi bonne chance!"
-    com "Bonne chance! Aterris pas dans un arbre! Ah ah!"
+    com "Bonne chance! Atterris pas dans un arbre! Ah ah!"
     M "C'est ça! Prend-moi pour un débutant tant que tu y es!"
     scene parachute with Dissolve(.5)
     with Pause(5)
@@ -354,10 +354,29 @@ label se_cacher:
     jump pas_reussi_cacher
 
 label reussi_cacher:
+    jump eglise
 
 label pas_reussi_cacher:
+    jump se_cacher
+
+label puzzle:
+    jump donjon_rexma
+
+label donjon_rexma:
+    if policier_mort:
+        jump fin_3_mal
+    else:
+        jump fin_2_bien
+    
+label fin_2_bien:
+    return
+
+label fin_3_mal:
+    return
 
 label info_eglise:
+    jump puzzle
+
 
 
 #image button
