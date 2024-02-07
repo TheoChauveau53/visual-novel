@@ -10,7 +10,7 @@ define secte = Character('Personnes masquées', color="#a5a5a5")
 
 
 transform pos_perso:
-    xpos 0.1 ypos .2
+    xpos .0 ypos .2
 transform pos_inv1:
     xpos 0.155 ypos .2
 transform pos_inv2:
@@ -76,7 +76,7 @@ init python:
 # Le jeu commence ici
 label start:
     scene avion with Dissolve(.5)
-   
+    show marccc at pos_perso
     show screen sac
     "On approche du site."
     com "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
