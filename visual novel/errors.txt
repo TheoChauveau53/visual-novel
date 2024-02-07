@@ -2,9 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 78: end of line expected.
-    show marccc at xpos 0
-                        ^
+The label puzzle is defined twice, at File "game/script.rpy", line 383:
+label puzzle:
+and File "game/script.rpy", line 402:
+label puzzle:
+
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Wed Feb  7 10:44:03 2024
+Wed Feb  7 11:52:14 2024

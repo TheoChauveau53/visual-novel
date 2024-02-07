@@ -1,28 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 9, in script
-    define config.mouse_callbacks = False
-  File "renpy/common/000namespaces.rpy", line 34, in set
-    setattr(self.nso, name, value)
-Exception: config.mouse_callbacks is not a known configuration variable.
+  File "game/script.rpy", line 385, in script
+    show screen rexma2
+  File "renpy/common/000statements.rpy", line 647, in execute_show_screen
+    renpy.show_screen(name, *args, **kwargs)
+Exception: Screen rexma2 is not known.
+
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 9, in script
-    define config.mouse_callbacks = False
-  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 2219, in execute
-    self.set()
-  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 2237, in set
-    ns.set(self.varname, value)
-  File "renpy/common/000namespaces.rpy", line 34, in set
-    setattr(self.nso, name, value)
-  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\defaultstore.py", line 101, in __setattr__
-    raise Exception('config.%s is not a known configuration variable.' % (name))
-Exception: config.mouse_callbacks is not a known configuration variable.
+  File "game/script.rpy", line 385, in script
+    show screen rexma2
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 1968, in execute
+    self.call("execute")
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 1950, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\statements.py", line 349, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 647, in execute_show_screen
+    renpy.show_screen(name, *args, **kwargs)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\screen.py", line 1322, in show_screen
+    raise Exception("Screen %s is not known.\n" % (name[0],))
+Exception: Screen rexma2 is not known.
+
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 visual novel 1.0
-Wed Feb  7 09:57:54 2024
+Wed Feb  7 11:52:56 2024

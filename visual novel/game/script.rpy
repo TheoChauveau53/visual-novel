@@ -58,9 +58,12 @@ init:
     $ nbr_forcage = 0
     $ nbr_morceaux_mince = 0
     $ policier_mort = False
-    $ noeud_clique = 1
+    $ noeud_clique = 0
     $ time = 5
     $ end = False
+    $ puzzle = {1:1,2:0,3:3,
+        4:4,5:5,6:6,
+        7:7,8:8,9:9}
 
 init python:
     class Item:
@@ -75,6 +78,7 @@ init python:
 
 # Le jeu commence ici
 label start:
+    jump puzzle
     scene avion with Dissolve(.5)
     show marccc at pos_perso
     show screen sac
