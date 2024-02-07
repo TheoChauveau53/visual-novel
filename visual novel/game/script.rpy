@@ -78,7 +78,6 @@ init python:
 
 # Le jeu commence ici
 label start:
-    jump puzzle
     scene avion with Dissolve(.5)
     show marccc at pos_perso
     show screen sac
@@ -333,7 +332,7 @@ label revelation_policier:
     menu:
         "Que faites-vous?"
         "Aider le policier à démanteler la secte":
-            jump demanteler_secten
+            jump demanteler_secte
         "Sortir du village":
             jump sortir_village
 
@@ -472,7 +471,7 @@ screen inventory:
         image inventaire[0].getPNG() at pos_inv1
 
 screen countdown:
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Hide("noeud1"),SetVariable("end",True)])
+    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Hide("noeud1"), Hide("noeud2"),Hide("noeud3"),Hide("noeud4"),Hide("noeud5"),Hide("noeud6"),Hide("noeud7"),Hide("noeud8"),Hide("noeud9"),Hide("noeud10"),SetVariable("end",True)])
     if time <= 3:
         text str(time) color "#FF0000" 
     else:
