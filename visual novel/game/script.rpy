@@ -29,9 +29,9 @@ define secte_whisper = Character('Personnes masquées', color="#a5a5a5", what_si
 transform pos_perso:
     xpos .0 ypos .2
 transform pos_perso1:
-    xpos 0.25 ypos .2
+    xpos 0.40 ypos .2
 transform pos_perso2:
-    xpos 0.50 ypos .2 
+    xpos 0.75 ypos .2 
 transform pos_inv1:
     xpos 0.155 ypos .2
 transform pos_inv2:
@@ -116,10 +116,10 @@ label start:
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
     show marccc at pos_perso
-    M_whisper "Tiens. On ne m'avait pas dit que la forêt étais inhabité?"
+    M_whisper "Tiens. On ne m'avait pas dit que la forêt était inhabité?"
     scene sacrifice with Dissolve(.5)
     M "Mais... Mais qu'est ce qu'il se passe là-bas?! Mais qu'est ce que... Il y a quelqu'un dans le feu ?!"
-    M "Bordel! Je crois que je n'aurais jamais du être ici. Il faut que j'appelle le pilote pour le prévenir de ce qu'il se passe ici."
+    M "Bordel! Je crois que je n'aurais jamais dû être ici. Il faut que j'appelle le pilote pour le prévenir de ce qu'il se passe ici."
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon téléphone dans l'avion. Fais chier! Je vais devoir attendre qu'ils partent pour descendre."
     M_whisper "Je vais tenter de défaire mes liens en attendant."
@@ -154,7 +154,7 @@ label pendaison:
 
 label QTE_reussi:
     scene sacrifice with Dissolve(.5)
-    "Le rituel se finit et les personnes masquées s'en aillent sans avoir remarqué Marc."
+    "Le rituel se finit et les personnes masquées partent sans avoir remarqués Marc."
     show marccc at pos_perso
     M "Il faut que je réussisse à descendre de l'arbre sans me blesser."
     M "Je vais devoir passer par une de ses deux branches. La plus fine me permettrait de descendre plus rapidement, mais la plus large me paraît plus solide."
@@ -171,9 +171,9 @@ label QTE_reussi:
 label QTE_echoue:
     scene sacrifice with Dissolve(.5)
     "Crack!"
-    "Les personnes autour du feu remarque Marc et commence a courir vers lui."
+    "Les personnes autours du feu remarquent Marc et commencent à courir vers lui."
     show marccc at pos_perso
-    M_shout "Merde! J'arrive pas à me défaire de ce parachute, il faut que je parte de là en vitesse."
+    M_shout "Merde! Je n'arrive pas à me défaire de ce parachute, il faut que je parte de là en vitesse."
     "Les personnes masquées se jettent sur Marc."
     M_shout "Non! Arrêtez! Mais cassez-vous! Qu'est-ce que vous me voulez!"
     "Marc s'évanouit."
@@ -220,7 +220,7 @@ label voir_village:
 label entrer_village:
     scene EntreeVillage with Dissolve(.5)
     show marccc at pos_perso
-    M "C'est un très beau village. Bon, j'y vais."
+    M "C'est un très beau village. Bon j'y vais."
     "Marc se rapproche et une alarme se déclenche directement."
     M_shout "Mince! Une alarme! Il me faut fuire!"
     if blesse == True :
@@ -239,8 +239,8 @@ label fuite_cabane:
     M_whisper "Je vais me cacher sous le lit."
     show tristanmask at pos_perso1
     show selenemask at pos_perso2
-    secte_shout "Bon. Il ne doit pas être ici, continuez de fouiller la forêt!"
-    "Marc est soulagé et il s'évanouit."
+    secte_shout "Bon! Il ne doit pas être ici. Continuez de fouiller la forêt!"
+    "Marc est soulagé et s'évanouit."
     jump reveil_cabane
 
 label reveil_cabane:
@@ -273,19 +273,20 @@ label capture_entree_village:
     jump dans_la_cage
 
 label dans_la_cage:
-    A3 "Bonjour Monsieur Marc, comment allez-vous?"
+    A3 "Bonjour Marc, comment allez-vous?"
     "Marc se réveille."
     show marccc at pos_perso
     show juliannn at pos_perso2
-    M "Qui...Qui Êtes-vous ?! Qu'est-ce que vous me voulez ?!"
+    M "Qui...Qui êtes-vous ?! Qu'est-ce que vous me voulez ?!"
     A3 "Oh, je suis bête. Je ne me suis pas présenté. Où sont mes bonnes manières!"
     C "Je m'appele Julian. Je suis le Joyeux de cette magnifique communauté."
     M "Le gourou de cette secte plutôt!"
-    C "Attention à votre langage jeune homme. Tant que je rest aimable"
-    M_shout "\"Aimable\"! Ne me faite pas rire! Vous m'avez kidnappé et enfermé bande de dégénérés!"
+    C "Attention à votre langage jeune homme. Tant que je reste aimable"
+    M_shout "\"Aimable\"! Ne me faite pas rire! Vous m'avez kidnappé et enfermé, bande de dégénérés!"
     C "Malheureusement, vous avez vu des choses que vous n'auriez jamais du voir."
-    C "Nous ne puvons pas vous laisser partir. Ne vous en faites pas, votre sort ne sera pas dfférent de ce que vous avez vu."
+    C "Nous ne pouvons pas vous laisser partir. Ne vous en faites pas, votre sort ne sera pas différent de ce que vous avez vu."
     C_shout "Garde!"
+    show selenemask at pos_perso1
     A "Vous m'avez appelé?"
     C "Sélène, surveillez notre invité, ne le laissez pas s'échapper."
     B "Entendu."
@@ -310,7 +311,8 @@ label forcer_cage:
     show marccc at pos_perso
     M "La cage ne m'a pas l'air bien solide. Je vais essayer de sortir en forçant la serrure."
     "Marc secoue la porte de sa cage avec toute sa force."
-    B "Eh toi! Qu'es-ce que tu assaies de faire!"
+    show selenemask at pos_perso2
+    B "Eh toi! Qu'es-ce que tu essaies de faire!"
     M "Mince, On m'a vu, je ne pourrais pas sortir."
     if nbr_forcage==2:
         jump mort_cage
@@ -330,7 +332,7 @@ label fouiller_cage:
     M "La lime est trop fine, je ne pourrais pas couper les barreaux avec."
     "Marc aperçoit un livre sous le cadavre."
     "Du sang couvre les pages du livre mais un morceau de texte reste lisible."
-    "Ces personnes sont complètement folles, ils nous oblige à manger des outils en pièce détaché, ça va finir par me tuer. J'ai déjà été obligé ..."
+    "Ces gens sont complètement fous, ils nous obligent à manger des outils en pièces détachées, ça va finir par me tuer. J'ai déjà été obligé ..."
     show marccc at pos_perso
     M "Je n'arrive pas à lire la suite"
     M "Ils forcent les prisonniers à manger des outils! C'est horrible!"
@@ -347,14 +349,16 @@ label fouiller_cage:
 
 
 label pince_echoue:
-    B "Eh! Qu'est ce que tu fais avec une pince toi?!"
+    show slenemask at pos_perso2
+    B "Eh! Qu'est-ce que tu fais avec une pince toi?!"
     show marccc at pos_perso
     M "Rien dutout! Je viens juste de la trouver par terre."
     B "Je vais t'aider à expier tes péchés!"
     "Le garde se fait assomer par derrière."
+    show tristanmask at pos_perso1
     A "Bonjour jeune homme, si vous voulez vivre, suivez-moi."
-    M "Qui ête-vous?!"
-    A "Je ne peux rien te dire pour l'instant. Contente-toi de me suivre."
+    M_shout "Qui... Qui êtes-vous?!"
+    A "Moins fort. Je ne peux rien te dire pour l'instant. Contente-toi de me suivre."
     jump mettre_masque
 
 label pince_reussi:
@@ -367,6 +371,7 @@ label pince_reussi:
 
 label mettre_masque:
     "L'homme masqué tend un masque a Marc."
+    show juliannn at pos_perso2
     A " Enfilez ça et ne vous éloignez pas."
     jump cabane_rencontre_A
 
@@ -378,7 +383,7 @@ label revelation_policier:
         "Que faites-vous?"
         "Aider le policier à démanteler la secte":
             jump demanteler_secte
-        "Sortir du village":
+        "Sortir de la foret":
             jump sortir_village
 
 label demanteler_secte:
@@ -390,20 +395,83 @@ label demanteler_secte:
 
 
 label sortir_village:
-    scene EntreeVillage with Dissolve(.5)
-    jump fuite
+    scene entreevillage with Dissolve(.5)
+    M "Je veux m'en aller de cette forêt. Je n'en peux plus. Je veux retourner chez moi"
+    A2 "Ne t'en fais pas, je comprend. Je vais t'accompagner jusqu'à la route la plus proche"
+    A2 "Ils ont posé plusieurs pièges pour empêcher les victimes de s'enfuir."
+    "Ils marchent pendant plusieurs heures et approchent de la sortie de la forêt."
+    A2 "Nous nous séparons donc ici. Rentre bien chez toi, mon ami."
+    M "Merci Tristan, je te doit la vie, je ne pourrais jamais assez te remercier. Je m'en veux de te laisser ici mais je n'en peux plus. Je te souhaite bonne chance."
+    A2 "Salut, Il y a une ville de ce côté à environ une heure de marche."
+    "Marc regarde Tristan retourner dans la forêt"
+    A3_shout "Qu'est-ce que tu fais là toi! Ne me dis pas que tu essayais de t'enfuir!"
+    A2 "Non, c'est pas ça je cherchais le fugi... Pan!"
+    "Marc voit Tristan se faire abattre froidement d'un simple coup de feu."
+    M "Noooon, Tristaaaaan."
+    menu:
+        "Qu'est-ce que je vais faire?!"
+        "Reprendre la mission du GOAT Tristan":
+            jump reprendre_mission
+        "Fuire":
+            jump fuite
 
 label fuite:
     scene foret_sombre with Dissolve(.5)
+    show marccc at pos_perso
+    M "Je suis désolé Tristan, je n'ai pas le courage d'y retourner pour te venger."
     "Marc a decidé de s'enfuir."
     "Il est resté en vie."
+    "FIN"
     return
 
 label reprendre_mission:
+    scene foret_sombre with Dissolve(.5)
+    M_shout "Non! Tristan est mort à cause de moi. Je dois le venger, je ne pourrais plus me regarder dans la glace sinon."
+    scene baladeforet with Dissolve(.5)
+    M "Je vais retourner à la cabane de Tristan, Je ne peux pas laisser mes émotions me contrôler."
     scene bureau with Dissolve(.5)
+    secte_shout "Le fugitif est là-bas!"
+    M "Il faut que je me dépêche de rentrer"
+    jump minijeux_serrure
+label minijeux_serrure:
+    jump fouiller_cabane_fuite
+
+label fouiller_cabane_fuite:
+    M "Tristan a surement laissé des infos cachées ici."
+    menu:
+        "Il doit y avoir des infos ici"
+        "Fouiller son bureau":
+            if cle_trouve:
+                M "C'est bon, ça s'ouvre!"
+                jump tiroir_fouille
+            else:
+                M "Mince il me faut une clé pour ouvrir le tiroir."
+                jump fouiller_cabane_fuite
+        "Fouiller son lit":
+            if cle_trouve:
+                M"J'ai déjà fouiller là-bas"
+            else:
+                M "Je vais aller fouiller son lit"
+                jump lit_fouille
+
+label lit_fouille:
     scene lit with Dissolve(.5)
+    "Marc cherche sous le matelas."
+    cle_trouve = True
+    "Parfait, la clé. C'est sûrement celle du tiroir de son bureau."
+    jump fouiller_cabane_fuite
+
+label tiroir_fouille:
     scene bureau with Dissolve(.5)
-    jump voir_maire
+    M "OK. Qu'est-ce qu'on a là dedans?"
+    "Marc ouvre le tiroir."
+    "Il trouve un journal, un talkie-walkie ainsi qu'une étrange pièce."
+    M "Qu'est donc cette pièce? Étrange."
+    "Marc ouvre le journal"
+    "Lorsque j'ai déplacer le corps du gars que le Joyeux venait d'assassiner aujourd'hui,J'ai vu qu'il s'agissait de son bras-droit et j'ai trouvé une pièce étrange sur lui je l'ai alors g..."
+    "Je dois ... deuxième et troisième pièces. Elle... dans la maison du ... ou sinon ... église."
+    "J'ai remarqué que le Joyeux sort de chez lui de 7h20 à 7h30 tout les matins pour aller à ... Je devrai aller fouiller."
+     
 
 label voir_maire:
     jump trouve_a_temps
