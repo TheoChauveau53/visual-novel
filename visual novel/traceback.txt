@@ -1,28 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 97, in script
-    if noeud_clique<1 && end == True:
-SyntaxError: invalid syntax (game/script.rpy, line 97)
+  File "game/script.rpy", line 9, in script
+    define config.mouse_callbacks = False
+  File "renpy/common/000namespaces.rpy", line 34, in set
+    setattr(self.nso, name, value)
+Exception: config.mouse_callbacks is not a known configuration variable.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 97, in script
-    if noeud_clique<1 && end == True:
-  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 1842, in execute
-    if renpy.python.py_eval(condition):
-  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\python.py", line 1207, in py_eval
-    code = py_compile(code, 'eval')
-  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\python.py", line 1144, in py_compile
-    raise e
-  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\python.py", line 1081, in py_compile
-    raise orig_e
-  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\python.py", line 1073, in py_compile
-    tree = compile(source, filename, py_mode, ast.PyCF_ONLY_AST | flags, 1)
-SyntaxError: invalid syntax (game/script.rpy, line 97)
+  File "game/script.rpy", line 9, in script
+    define config.mouse_callbacks = False
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 2219, in execute
+    self.set()
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 2237, in set
+    ns.set(self.varname, value)
+  File "renpy/common/000namespaces.rpy", line 34, in set
+    setattr(self.nso, name, value)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\defaultstore.py", line 101, in __setattr__
+    raise Exception('config.%s is not a known configuration variable.' % (name))
+Exception: config.mouse_callbacks is not a known configuration variable.
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 visual novel 1.0
-Tue Feb  6 16:07:56 2024
+Wed Feb  7 09:57:54 2024

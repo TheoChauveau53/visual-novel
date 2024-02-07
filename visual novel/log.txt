@@ -1331,6 +1331,7 @@ Maximum texture size: 4096x4096
 Screen sizes: virtual=(1920, 1080) physical=(2560, 1017) drawable=(2560, 1017)
 Maximum texture size: 4096x4096
 Screen sizes: virtual=(1920, 1080) physical=(2560, 1017) drawable=(2560, 1017)
+<<<<<<< Updated upstream
 Maximum texture size: 4096x4096
 Resetting cache.
 Early init took 1229.57s
@@ -1373,4 +1374,6 @@ Renderer: b'NVIDIA GeForce RTX 3070/PCIe/SSE2'
 Version: b'4.6.0 NVIDIA 531.87'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1808, 1017) drawable=(1808, 1017)
+=======
+>>>>>>> Stashed changes
 Maximum texture size: 4096x4096

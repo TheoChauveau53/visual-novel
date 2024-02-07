@@ -47,7 +47,8 @@ transform pos_inv17:
 transform pos_inv18:
     xpos 0.73 ypos .6
 
-
+transform zoom_corde:
+    xzoom .5 yzoom.5
 transform pos_sac:
     xzoom .3 yzoom .3
     xpos .0 ypos .1
@@ -81,7 +82,7 @@ label start:
     com "Bonne chance! Atterris pas dans un arbre! Ah ah!"
     M "C'est ça! Prend-moi pour un débutant tant que tu y es!"
     scene parachute with Dissolve(.5)
-    with Pause(5)
+    $ renpy.pause(5.0, hard=True)
     scene #branche with Dissolve(.5)
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
@@ -92,14 +93,27 @@ label start:
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon téléphone dans l'avion. Fais chier! Je vais devoir attendre qu'ils partent pour descendre."
     M "Je vais tenter de défaire mes liens en attendant."
-    show screen noeud
-    show screen countdown with Pause(5)
-    if noeud_clique<1 and end == True:
+    show screen noeud1
+    show screen noeud2
+    show screen noeud3
+    show screen noeud4
+    show screen noeud5
+    show screen noeud6
+    show screen noeud7
+    show screen noeud8
+    show screen noeud9
+    show screen noeud10
+
+    show screen countdown 
+    $ renpy.pause(5.0, hard=True)
+    
+    
+    if noeud_clique<1:
         jump pendaison
-    if 0<noeud_clique<6 and end == True:
-        jump QTE_reussi
-    if 5<noeud_clique and end == True:
+    if 0<noeud_clique<6:
         jump QTE_echoue
+    if 5<noeud_clique:
+        jump QTE_reussi
 
 label pendaison:
     scene #branche with Dissolve(.5)
@@ -390,10 +404,57 @@ screen sac:
         else:
             action [Hide("inventory"), SetVariable("open", False)]
 
-screen noeud:
+screen noeud1:
     imagebutton:
         idle "noeud.png"
-        action [Hide("noeud"),SetVariable("noeud_clique", noeud_clique+1)]
+        action [Hide("noeud1"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv1
+        
+screen noeud2:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud2"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv2
+screen noeud3:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud3"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv3
+screen noeud4:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud4"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv4
+screen noeud5:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud5"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv5
+screen noeud6:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud6"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv6
+screen noeud7:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud7"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv7
+screen noeud8:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud8"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv8
+screen noeud9:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud9"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv9
+screen noeud10:
+    imagebutton:
+        idle "noeud.png"
+        action [Hide("noeud10"),SetVariable("noeud_clique", noeud_clique+1)]
+        at pos_inv10
 
 screen inventory:
     image "inventory.png" at truecenter
@@ -401,7 +462,7 @@ screen inventory:
         image inventaire[0].getPNG() at pos_inv1
 
 screen countdown:
-    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Hide("noeud"),SetVariable("end",True)])
+    timer 1 repeat True action If(time > 0, true=SetVariable('time', time - 1), false=[Hide('countdown'), Hide("noeud1"),SetVariable("end",True)])
     if time <= 3:
         text str(time) color "#FF0000" 
     else:
