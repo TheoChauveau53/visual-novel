@@ -1,16 +1,37 @@
-define com = Character('Pilote', color="#5574da")
+define com = Character('Radio du Pilote', color="#5574da")
 define M = Character('Marc', color="#ad0d0d")
 define B = Character('Sélène Garde de la cage', color="#473439")
 define C = Character('Julian le Joyeux', color="#473439")
 define A = Character('Homme masqué', color="#312d69")
 define A2 = Character('Sergent Tristan', color="#ad0d0d")
+define A3 = Character('Inconnu', color="#4d2614")
 define secte = Character('Personnes masquées', color="#a5a5a5")
+define com_shout = Character('Radio du Pilote', color="#5574da", what_size = 40)
+define M_shout = Character('Marc', color="#ad0d0d", what_size = 40)
+define B_shout = Character('Sélène Garde de la cage', color="#473439", what_size = 40)
+define C_shout = Character('Julian le Joyeux', color="#473439", what_size = 40)
+define A_shout = Character('Homme masqué', color="#312d69", what_size = 40)
+define A2_shout = Character('Sergent Tristan', color="#ad0d0d", what_size = 40)
+define A3_shout = Character('Inconnu', color="#4d2614", what_size = 40)
+define secte_shout = Character('Personnes masquées', color="#a5a5a5", what_size = 40)
+define com_whisper = Character('Radio du Pilote', color="#5574da", what_size = 25)
+define M_whisper = Character('Marc', color="#ad0d0d", what_size = 25)
+define B_whisper = Character('Sélène Garde de la cage', color="#473439", what_size = 25)
+define C_whisper = Character('Julian le Joyeux', color="#473439", what_size = 25)
+define A_whisper = Character('Homme masqué', color="#312d69", what_size = 25)
+define A2_whisper = Character('Sergent Tristan', color="#ad0d0d", what_size = 25)
+define A3_whisper = Character('Inconnu', color="#4d2614", what_size = 25)
+define secte_whisper = Character('Personnes masquées', color="#a5a5a5", what_size = 25)
 
 
 
 
 transform pos_perso:
     xpos .0 ypos .2
+transform pos_perso1:
+    xpos 0.25 ypos .2
+transform pos_perso2:
+    xpos 0.50 ypos .2 
 transform pos_inv1:
     xpos 0.155 ypos .2
 transform pos_inv2:
@@ -82,26 +103,26 @@ label start:
     show marccc at pos_perso
     show screen sac
     "On approche du site."
-    com "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
+    com_shout "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
     show marccc at pos_perso
-    M "OK! Souhaite-moi bonne chance!"
-    com "Bonne chance! Atterris pas dans un arbre! Ah ah!"
+    M_shout "OK! Souhaite-moi bonne chance!"
+    com_shout "Bonne chance! Atterris pas dans un arbre! Ah ah!"
     show marccc at pos_perso
-    M "C'est ça! Prend-moi pour un débutant tant que tu y es!"
+    M_whisper "C'est ça! Prend-moi pour un débutant tant que tu y es!"
     scene parachute with Dissolve(.5)
     $ renpy.pause(5.0, hard=True)
-    scene #branche with Dissolve(.5)
+    scene branche with Dissolve(.5)
     show marccc at pos_perso
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
     show marccc at pos_perso
-    M "Tiens. On ne m'avait pas dit que la forêt étais inhabité?"
+    M_whisper "Tiens. On ne m'avait pas dit que la forêt étais inhabité?"
     scene sacrifice with Dissolve(.5)
     M "Mais... Mais qu'est ce qu'il se passe là-bas?! Mais qu'est ce que... Il y a quelqu'un dans le feu ?!"
     M "Bordel! Je crois que je n'aurais jamais du être ici. Il faut que j'appelle le pilote pour le prévenir de ce qu'il se passe ici."
     "Essaie de fouiller ses poches."
     M "Et merde! J'ai oublié mon téléphone dans l'avion. Fais chier! Je vais devoir attendre qu'ils partent pour descendre."
-    M "Je vais tenter de défaire mes liens en attendant."
+    M_whisper "Je vais tenter de défaire mes liens en attendant."
     show screen noeud1
     show screen noeud2
     show screen noeud3
@@ -125,7 +146,7 @@ label start:
         jump QTE_reussi
 
 label pendaison:
-    scene #branche with Dissolve(.5)
+    scene branc he with Dissolve(.5)
     "Marc n'a pas réussi à se défaire de son parachute."
     "Marc s'est pendu à une branche."
     jump start
@@ -134,6 +155,7 @@ label pendaison:
 label QTE_reussi:
     scene sacrifice with Dissolve(.5)
     "Le rituel se finit et les personnes masquées s'en aillent sans avoir remarqué Marc."
+    show marccc at pos_perso
     M "Il faut que je réussisse à descendre de l'arbre sans me blesser."
     M "Je vais devoir passer par une de ses deux branches. La plus fine me permettrait de descendre plus rapidement, mais la plus large me paraît plus solide."
     M "Laquelle vais-je choisir?"
@@ -150,14 +172,16 @@ label QTE_echoue:
     scene sacrifice with Dissolve(.5)
     "Crack!"
     "Les personnes autour du feu remarque Marc et commence a courir vers lui."
-    M "Merde! J'arrive pas à me défaire de ce parachute, il faut que je parte de là en vitesse."
+    show marccc at pos_perso
+    M_shout "Merde! J'arrive pas à me défaire de ce parachute, il faut que je parte de là en vitesse."
     "Les personnes masquées se jettent sur Marc."
-    M "Non! Arrêtez! Mais cassez-vous! Qu'est-ce que vous me voulez!"
+    M_shout "Non! Arrêtez! Mais cassez-vous! Qu'est-ce que vous me voulez!"
     "Marc s'évanouit."
     jump dans_la_cage
 
 label blesse:
     scene foret_claire with Dissolve(.5)
+    show marccc at pos_perso
     M "Aïe! Je me suis tordu la cheville. C'est vraiment le pire moment pour ça!"
     M "Bon, maintenant je dois trouver un endroit pour me cacher et soigner ma cheville."
     $ blesse = True
@@ -165,12 +189,14 @@ label blesse:
 
 label pas_blesse:
     scene foret_claire with Dissolve(.5)
+    show marccc at pos_perso
     M "Ouf! C'était juste. Il faut que je trouve un endroit pour me reposer "
     $ blesse = False
     jump balade_foret
 
 label balade_foret:
     scene foret_claire with Dissolve(.5)
+    show marccc at pos_perso 
     M "Bon, je prend quel chemin maintenant."
     menu:
         "Que faites-vous ?"
@@ -181,6 +207,7 @@ label balade_foret:
 
 label voir_village:
     scene EntreeVillage with Dissolve(.5)
+    show marccc at pos_perso
     M "Oh! Un village! Est-ce qu'ils savent ce qui se passe dans leur forêt?"
     M "Est-ce que j'y vais?"
     menu:
@@ -192,9 +219,10 @@ label voir_village:
 
 label entrer_village:
     scene EntreeVillage with Dissolve(.5)
+    show marccc at pos_perso
     M "C'est un très beau village. Bon, j'y vais."
     "Marc se rapproche et une alarme se déclenche directement."
-    M "Mince! Une alarme! Il me faut fuire!"
+    M_shout "Mince! Une alarme! Il me faut fuire!"
     if blesse == True :
         jump capture_entree_village
     if blesse == False :
@@ -204,17 +232,23 @@ label entrer_village:
 label fuite_cabane:
     scene lit with Dissolve(.5)
     "Marc aperçoit une cabane dans la forêt."
+    show marccc at pos_perso
     M "Vite! Une cabane! Il faut que j'aille me réfugier là-bas."
     "Il rentre dans la cabane."
-    M "Je vais me cacher sous le lit."
-    secte "Bon. Il ne doit pas être ici, continuez de fouiller la forêt!"
+    show marccc at pos_perso
+    M_whisper "Je vais me cacher sous le lit."
+    show tristanmask at pos_perso1
+    show selenemask at pos_perso2
+    secte_shout "Bon. Il ne doit pas être ici, continuez de fouiller la forêt!"
     "Marc est soulagé et il s'évanouit."
     jump reveil_cabane
 
 label reveil_cabane:
     scene bureau with Dissolve(.5)
     "Marc se réveille attaché à une chaise."
-    M "Qu'est-ce... Qu'est-ce qu'il se passe! Pourquoi je suis attaché ?!"
+    show marccc at pos_perso
+    show tristanmask at pos_perso2
+    M_shout "Qu'est-ce... Qu'est-ce qu'il se passe! Pourquoi je suis attaché ?!"
     A "Qu'est-ce que vous faites chez moi?"
     jump cabane_rencontre_A
 
@@ -225,6 +259,7 @@ label cabane_rencontre_A:
 label cabane:
     scene lit with Dissolve(.5)
     "Il aperçoit une cabane isolée"
+    show marccc at pos_perso
     M "Tiens! Une cabane. Elle n'a pas l'air d'être habitée."
     M "Je vais essayer de me reposer un peu. Je vais me mettre sous le lit au cas où."
     jump reveil_cabane
@@ -232,22 +267,25 @@ label cabane:
 label capture_entree_village:
     scene EntreeVillage with Dissolve(.5)
     "Marc se déplace lentement à cause de sa blessure"
-    M "Merde! Ils sont en train de me rattraper!"
+    show marccc at pos_perso
+    M_shout "Merde! Ils sont en train de me rattraper!"
     "Il se fait attraper et s'évanouit"
     jump dans_la_cage
 
 label dans_la_cage:
-    A "Bonjour Monsieur Marc, comment allez-vous?"
+    A3 "Bonjour Monsieur Marc, comment allez-vous?"
     "Marc se réveille."
+    show marccc at pos_perso
+    show juliannn at pos_perso2
     M "Qui...Qui Êtes-vous ?! Qu'est-ce que vous me voulez ?!"
-    A "Oh, je suis bête. Je ne me suis pas présenté. Où sont mes bonnes manières!"
+    A3 "Oh, je suis bête. Je ne me suis pas présenté. Où sont mes bonnes manières!"
     C "Je m'appele Julian. Je suis le Joyeux de cette magnifique communauté."
     M "Le gourou de cette secte plutôt!"
     C "Attention à votre langage jeune homme. Tant que je rest aimable"
-    M "\"Aimable\"! Ne me faite pas rire! Vous m'avez kidnappé et enfermé bande de dégénérés!"
+    M_shout "\"Aimable\"! Ne me faite pas rire! Vous m'avez kidnappé et enfermé bande de dégénérés!"
     C "Malheureusement, vous avez vu des choses que vous n'auriez jamais du voir."
     C "Nous ne puvons pas vous laisser partir. Ne vous en faites pas, votre sort ne sera pas dfférent de ce que vous avez vu."
-    C "Garde!"
+    C_shout "Garde!"
     A "Vous m'avez appelé?"
     C "Sélène, surveillez notre invité, ne le laissez pas s'échapper."
     B "Entendu."
@@ -257,7 +295,8 @@ label dans_la_cage:
 label cadavre_cage:
     "Marc examine la cage dans laquelle il a été enfermé."
     "Il remarque un cadavre à ses pieds."
-    M "Ah! Mais! Qu'est ce qu'il fait là!"
+    show marccc at pos_perso
+    M_shout "Ah! Mais! Qu'est ce qu'il fait là!"
     menu:
         "Que faites-vous ?"
         "Forcer la cage":        
@@ -268,6 +307,7 @@ label cadavre_cage:
     
 
 label forcer_cage:
+    show marccc at pos_perso
     M "La cage ne m'a pas l'air bien solide. Je vais essayer de sortir en forçant la serrure."
     "Marc secoue la porte de sa cage avec toute sa force."
     B "Eh toi! Qu'es-ce que tu assaies de faire!"
@@ -283,19 +323,22 @@ label mort_cage:
     jump dans_la_cage
 
 label fouiller_cage:
+    show marccc at pos_perso
     M "La cage ne m'a pas l'air bien solide. Je vais essayer de trouver quelque chose pour sortir."
     "Marc fouille la cellule et trouve une lime."
+    show marccc at pos_perso
     M "La lime est trop fine, je ne pourrais pas couper les barreaux avec."
     "Marc aperçoit un livre sous le cadavre."
     "Du sang couvre les pages du livre mais un morceau de texte reste lisible."
     "Ces personnes sont complètement folles, ils nous oblige à manger des outils en pièce détaché, ça va finir par me tuer. J'ai déjà été obligé ..."
+    show marccc at pos_perso
     M "Je n'arrive pas à lire la suite"
     M "Ils forcent les prisonniers à manger des outils! C'est horrible!"
     M "Si j'arrive à récupérer les autres morceaux de la pince, je devrais réussir à couper le cadenas"
     menu:
         "Que faites-vous?"
         #"Continuer de fouiller la cage":
-        "Sortir de la cage":
+        "Sortir de la cage": #a chaque tour tu proposes si il  veux fouiller la cage ou en sortir, il doit trouver 3 piece de pince, s'il a les 3 alors tu fais pop un mess qui dit qu'il a les 3 et qu'il peux sortir tu l'envoie dans pince reussi, s'il a pas les 3 et qu'il veux sortir tu l'envoies dans pinceechoué  
             if nbr_morceaux_mince ==3:
                 jump pince_reussi
             else:
@@ -305,6 +348,7 @@ label fouiller_cage:
 
 label pince_echoue:
     B "Eh! Qu'est ce que tu fais avec une pince toi?!"
+    show marccc at pos_perso
     M "Rien dutout! Je viens juste de la trouver par terre."
     B "Je vais t'aider à expier tes péchés!"
     "Le garde se fait assomer par derrière."
@@ -314,6 +358,7 @@ label pince_echoue:
     jump mettre_masque
 
 label pince_reussi:
+    show marccc at pos_perso
     M "OK. Voyons voir si j'arrive à couper ce cadenas."
     "Marc réussit à couper le cadenas et il sort de la cage."
     M "Très bien. Comment je m'enfuit maintenant."
