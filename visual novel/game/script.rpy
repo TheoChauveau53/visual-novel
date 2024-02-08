@@ -73,7 +73,7 @@ transform pos_inv18:
 transform zoom_corde:
     xzoom .5 yzoom.5
 transform pos_sac:
-    xzoom .3 yzoom .3
+    xzoom .1 yzoom .1
     xpos .0 ypos .1
 
 transform background:
@@ -399,7 +399,7 @@ label fouiller_cage:
 
 
 label pince_echoue:
-    show slenemask at pos_perso2
+    show selenemask at pos_perso2
     B "Eh! Qu'est-ce que tu fais avec une pince toi?!"
     show marccc at pos_perso
     M "Rien dutout! Je viens juste de la trouver par terre."
@@ -420,8 +420,10 @@ label pince_reussi:
     jump cabane_rencontre_A
 
 label mettre_masque:
+    scene entreevillageee at Dissolve(.5)
+    show marccc at pos_perso
+    show TristanMask at pos_perso2
     "L'homme masqué tend un masque a Marc."
-    show juliannn at pos_perso2
     A " Enfilez ça et ne vous éloignez pas."
     jump cabane_rencontre_A
 
@@ -440,6 +442,8 @@ label revelation_policier:
 label demanteler_secte:
     scene bureau 
     with Dissolve(.5)
+    show marccc at pos_perso
+    show tristanmask at pos_perso1
     A2 "Tout ce que vous devez savoir, c'est que vous vous trouvez dans la secte Rexma." 
     A2 "Une secte cachée dans cette forêt qui sacrifie les personnes qui osent entrer dans leur forêt."
     M "Mais qui est Rexma ?"
