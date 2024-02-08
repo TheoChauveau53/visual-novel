@@ -168,7 +168,7 @@ label pendaison:
     
 
 label QTE_reussi:
-    scene sacrifice at background
+    scene sacrifice at foretdark
     with Dissolve(.5)
     "Le rituel se finit et les personnes masquées partent sans avoir remarqués Marc."
     scene branche 
@@ -187,7 +187,7 @@ label QTE_reussi:
             jump pas_blesse
 
 label QTE_echoue:
-    scene sacrifice at background
+    scene sacrifice at foretdark
     with Dissolve(.5)
     "Crack!"
     "Les personnes autours du feu remarquent Marc et commencent à courir vers lui."
