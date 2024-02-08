@@ -196,7 +196,7 @@ label pas_blesse:
     jump balade_foret
 
 label balade_foret:
-    scene foret_claire with Dissolve(.5)
+    scene baladeforet with Dissolve(.5)
     show marccc at pos_perso 
     M "Bon, je prend quel chemin maintenant."
     menu:
