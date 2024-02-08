@@ -77,7 +77,9 @@ transform pos_sac:
     xpos .0 ypos .1
 
 transform background:
-    xzoom 1.3 yzoom 1.5
+    xzoom 1.25 yzoom 1.3
+transform backgroundvillage:
+    xzoom .75 yzoom .75
 init:
     $ cle_trouve = False
     $ open = False
@@ -203,7 +205,7 @@ label blesse:
     jump balade_foret
 
 label pas_blesse:
-    scene foret_claireee at background
+    scene foret_claireee
     with Dissolve(.5)
     show marccc at pos_perso
     M "Ouf! C'était juste. Il faut que je trouve un endroit pour me reposer "
@@ -223,7 +225,7 @@ label balade_foret:
             jump voir_village
 
 label voir_village:
-    scene entreevillageee at background
+    scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     show marccc at pos_perso
     M "Oh! Un village! Est-ce qu'ils savent ce qui se passe dans leur forêt?"
@@ -236,7 +238,7 @@ label voir_village:
             jump balade_foret
 
 label entrer_village:
-    scene entreevillageee at background
+    scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     show marccc at pos_perso
     M "C'est un très beau village. Bon j'y vais."
@@ -249,7 +251,7 @@ label entrer_village:
     
 
 label fuite_cabane:
-    scene lit at background
+    scene lit 
     with Dissolve(.5)
     "Marc aperçoit une cabane dans la forêt."
     show marccc at pos_perso
@@ -257,7 +259,7 @@ label fuite_cabane:
     "Il rentre dans la cabane."
     show marccc at pos_perso
     M_whisper "Je vais me cacher sous le lit."
-    scene lit at background
+    scene lit 
     show tristanmask at pos_perso1
     show selenemask at pos_perso2
     secte_shout "Bon! Il ne doit pas être ici. Continuez de fouiller la forêt!"
@@ -265,7 +267,7 @@ label fuite_cabane:
     jump reveil_cabane
 
 label reveil_cabane:
-    scene bureau at background
+    scene bureau 
     with Dissolve(.5)
     "Marc se réveille attaché à une chaise."
     show marccc at pos_perso
@@ -288,7 +290,7 @@ label cabane_rencontre_A:
     jump revelation_policier 
 
 label cabane:
-    scene lit at background
+    scene lit 
     with Dissolve(.5)
     "Il aperçoit une cabane isolée"
     show marccc at pos_perso
@@ -297,7 +299,7 @@ label cabane:
     jump reveil_cabane
 
 label capture_entree_village:
-    scene entreevillageee at background
+    scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     "Marc se déplace lentement à cause de sa blessure"
     show marccc at pos_perso
@@ -419,7 +421,7 @@ label mettre_masque:
 
 
 label revelation_policier:
-    scene bureau at background
+    scene bureau
     with Dissolve(.5)
     menu:
         "Que faites-vous?"
@@ -429,7 +431,7 @@ label revelation_policier:
             jump sortir_village
 
 label demanteler_secte:
-    scene bureau at background
+    scene bureau 
     with Dissolve(.5)
     A2 "Tout ce que vous devez savoir, c'est que vous vous trouvez dans la secte Rexma." 
     A2 "Une secte cachée dans cette forêt qui sacrifie les personnes qui osent entrer dans leur forêt."
@@ -444,7 +446,7 @@ label demanteler_secte:
 
 
 label sortir_village:
-    scene entreevillageee at background
+    scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     show marccc at pos_perso
     show tristan at pos_perso2
@@ -494,7 +496,7 @@ label reprendre_mission:
     scene baladeforet at background
     with Dissolve(.5)
     M "Je vais retourner à la cabane de Tristan, Je ne peux pas laisser mes émotions me contrôler."
-    scene bureau at background
+    scene bureau
     with Dissolve(.5)
     secte_shout "Le fugitif est là-bas!"
     M "Il faut que je me dépêche de rentrer"
@@ -521,7 +523,7 @@ label fouiller_cabane_fuite:
                 jump lit_fouille
 
 label lit_fouille:
-    scene lit at background
+    scene lit 
     with Dissolve(.5)
     "Marc cherche sous le matelas."
     $ cle_trouve = True
@@ -529,7 +531,7 @@ label lit_fouille:
     jump fouiller_cabane_fuite
 
 label tiroir_fouille:
-    scene bureau at background
+    scene bureau 
     with Dissolve(.5)
     M "OK. Qu'est-ce qu'on a là dedans?"
     "Marc ouvre le tiroir."
@@ -604,7 +606,7 @@ label pas_reussi_cacher:
     jump se_cacher
 
 label eglise:
-    scene entreevillage at background
+    scene entreevillage at backgroundvillage
     with Dissolve(.5)
     "Marc arrive dans l'Église."
     scene eglisee at background
@@ -689,7 +691,7 @@ label fin_3_mal:
     return
 
 label info_eglise:
-    scene entreevillage at background
+    scene entreevillage at backgroundvillage
     with Dissolve(.5)
     A2 "Marc, viens."
     M "Oui?"
