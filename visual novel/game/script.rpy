@@ -482,6 +482,7 @@ label sortir_village:
     "Pan!"
     "Marc voit Tristan se faire abattre froidement d'un simple coup de feu."
     scene foret_sombre at backgroundforet
+    $ policier_mort = True
     with Dissolve(.5)
     show marccc at pos_perso1
     M "Noooon, Tristaaaaan!"
@@ -619,8 +620,8 @@ label se_cacher:
 label reussi_cacher:
     scene maisonmaire
     with Dissolve(.5)
-    show secteM at pos_perso1
-    show secteF at pos_perso2
+    show secteee1 at pos_perso1
+    show secteee2 at pos_perso2
     secte_shout "Le fugitif s'est infiltré dans la maison du maire! Retrouvez-le avant qu'il en sorte!"
     "Après de longues minutes d'agitation, les personnes masquées sortent de la maison pour chercher aux alentours"
     scene entreevillageee at backgroundvillage
@@ -645,10 +646,10 @@ label eglise:
     scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     "Marc arrive dans l'Église."
-    scene eglisee at background
+    scene eglisee at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso
-    show Tristan at pos_perso1
+    show tristan at pos_perso1
     M "Il faut que je trouve le dernier morceau du talkie-walkie et je pourrai contacter la police."
     "Il aperçoit le dernier morceau à droite de l'hôtel."
     M "Ah! le voilà."
@@ -690,14 +691,14 @@ label donjon_rexma_bien:
     scene donjonnn at background
     with Dissolve(.5)
     show marccc at pos_perso
-    show Tristan at pos_perso1
-    show juliannn at pos_perso2
+    show tristan at pos_perso1
     M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituel!"
     A2 "Exactement! C'est ici qu'ils font leurs rituels."
-    C_shout "Marc! Tristan Mais quelle surprise que de vous retrouver ici."
+    show juliannn at pos_perso2
+    C_shout "Marc! Tristan! Mais quelle surprise que de vous retrouver ici."
     C_shout "Vous vous êtes bien caché mais maintenant c'est fini! Vous ne pouvez plus vous échapper! Vous ne peux plus vous cacher!"
     M_shout "AH, AH, tu te trompes vieux dégénéré! Nous avons prévenu la police, ils seront là d'une minute à l'autre! TU ne pourras plus te cacher. Vous êtes tous foutu!"
-    C "Je le sais bien, mais... Mais que vont-ils trouver ici?! Dis-moi. J'ai brûlé tout les secrets que gardait le village, les membres du culte se sont déjà tous enfuie!"
+    C "Je le sais bien, mais... Mais que vont-ils trouver ici, dis-moi?! J'ai brûlé tout les secrets que gardait le village, les membres du culte se sont déjà tous enfuie!"
     C "Il ne restera rien à l'arrivée des policiers!"
     M "Mais... Impossible... je..."
     M_shout "Tu resteras avec nous pour les attendre! Je te laisserais pas t'enfuire aussi! Tu seras jugé pour tout tes meurtres!"
@@ -715,7 +716,7 @@ label fin_2_bien:
     "Pan! Pan!"
     "Julian, abattu, s'écroula sur le sol"
     show marcccsang at pos_perso1
-    show Tristan at pos_perso
+    show tristan at pos_perso
     "Les sirènes des voitures de police se firent entendre."
     "Quand la police arriva sur les lieux, tous les bâtiments avaient brûlé."
     "Les policiers ont ammené Marc à l'hôpital et il fût soigner."
@@ -742,7 +743,7 @@ label info_eglise:
     scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     show marccc at pos_perso
-    show Tristan at pos_perso1
+    show tristan at pos_perso1
     A2 "Marc, viens."
     M "Oui?"
     A2 "Il ne nous reste qu'à trouver le dernier morceau du talkie-walkie."
@@ -750,7 +751,7 @@ label info_eglise:
     M "Et s'ils nous trouvent avant qu'on les appelle ?"
     A2 "J'ai fait diversion pour nous laisser le temps de le trouver."
     "Marc et Tristan arrivent dans l'Église."
-    scene egliseee at background 
+    scene egliseee at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso
     show Tristan at pos_perso1
