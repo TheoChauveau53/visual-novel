@@ -79,9 +79,11 @@ transform pos_sac:
 transform background:
     xzoom 1.25 yzoom 1.3
 transform backgroundvillage:
-    xzoom .3 yzoom .3
-transform foretdark:
+    xzoom .5 yzoom .5
+transform backgroundsacrifice:
     xzoom 1.5 yzoom 1.5
+transform backgroundforet:
+    xzoom 1.8 yzoom 1.5
 init:
     $ cle_trouve = False
     $ open = False
@@ -123,14 +125,14 @@ label start:
     scene parachute at background
     with Dissolve(.5)
     $ renpy.pause(5.0, hard=True)
-    scene branche at background
+    scene branche 
     with Dissolve(.5)
     show marccc at pos_perso
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
     show marccc at pos_perso
     M_whisper "Tiens. On ne m'avait pas dit que la forêt était inhabité?"
-    scene sacrifice at background
+    scene sacrifice at backgroundsacrifice
     with Dissolve(.5)
     M "Mais... Mais qu'est ce qu'il se passe là-bas?! Mais qu'est ce que... Il y a quelqu'un dans le feu ?!"
     M "Bordel! Je crois que je n'aurais jamais dû être ici. Il faut que j'appelle le pilote pour le prévenir de ce qu'il se passe ici."
@@ -168,7 +170,7 @@ label pendaison:
     
 
 label QTE_reussi:
-    scene sacrifice at foretdark
+    scene sacrifice at backgroundsacrifice
     with Dissolve(.5)
     "Le rituel se finit et les personnes masquées partent sans avoir remarqués Marc."
     scene branche 
@@ -187,7 +189,7 @@ label QTE_reussi:
             jump pas_blesse
 
 label QTE_echoue:
-    scene sacrifice at foretdark
+    scene sacrifice at backgroundsacrifice
     with Dissolve(.5)
     "Crack!"
     "Les personnes autours du feu remarquent Marc et commencent à courir vers lui."
@@ -458,7 +460,7 @@ label sortir_village:
     A2 "Ne t'en fais pas, je comprends. Je vais t'accompagner jusqu'à la route la plus proche"
     A2 "Ils ont posé plusieurs pièges pour empêcher les victimes de s'enfuir."
     "Ils marchent pendant plusieurs heures et approchent de la sortie de la forêt."
-    scene foret_sombre at foretdark
+    scene foret_sombre at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso
     show tristan at pos_perso2
@@ -466,7 +468,7 @@ label sortir_village:
     M "Merci Tristan, je te dois la vie, je ne pourrais jamais assez te remercier. Je m'en veux de te laisser ici mais je n'en peux plus. Je te souhaite bonne chance."
     A2 "Il y a une ville de ce côté à environ une heure de marche."
     "Marc regarde Tristan retourner dans la forêt"
-    scene foret_sombre at foretdark
+    scene foret_sombre at backgroundforet
     with Dissolve(.5)
     show selenemask at pos_perso
     show tristan at pos_perso2
@@ -474,7 +476,7 @@ label sortir_village:
     A2 "Non, c'est pas ça je cherchais le fugi..."
     "Pan!"
     "Marc voit Tristan se faire abattre froidement d'un simple coup de feu."
-    scene foret_sombre at foretdark
+    scene foret_sombre at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso1
     M "Noooon, Tristaaaaan!"
@@ -486,7 +488,7 @@ label sortir_village:
             jump fuite
 
 label fuite:
-    scene foret_sombre at foretdark
+    scene foret_sombre at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso
     M "Je suis désolé Tristan, je n'ai pas le courage d'y retourner pour te venger."
@@ -496,10 +498,10 @@ label fuite:
     return
 
 label reprendre_mission:
-    scene foret_sombre at foretdark
+    scene foret_sombre at backgroundforet
     with Dissolve(.5)
     M_shout "Non! Tristan est mort à cause de moi. Je dois le venger, je ne pourrais plus me regarder dans la glace sinon."
-    scene baladeforet at foretdark
+    scene baladeforet at backgroundforet
     with Dissolve(.5)
     M "Je vais retourner à la cabane de Tristan, Je ne peux pas laisser mes émotions me contrôler."
     scene bureau
