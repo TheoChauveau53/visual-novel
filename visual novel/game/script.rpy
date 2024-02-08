@@ -75,6 +75,9 @@ transform zoom_corde:
 transform pos_sac:
     xzoom .3 yzoom .3
     xpos .0 ypos .1
+
+transform background:
+    xzoom 1.3 yzoom 1.5
 init:
     $ cle_trouve = False
     $ open = False
@@ -101,7 +104,8 @@ init python:
 
 # Le jeu commence ici
 label start:
-    scene avion with Dissolve(.5)
+    scene avion at background 
+    with Dissolve(.5)
     show marccc at pos_perso
     show screen sac
     "On approche du site."
@@ -111,15 +115,18 @@ label start:
     com_shout "Bonne chance! Atterris pas dans un arbre! Ah ah!"
     show marccc at pos_perso
     M_whisper "C'est ça! Prend-moi pour un débutant tant que tu y es!"
-    scene parachute with Dissolve(.5)
+    scene parachute at background
+    with Dissolve(.5)
     $ renpy.pause(5.0, hard=True)
-    scene branche with Dissolve(.5)
+    scene branche at background
+    with Dissolve(.5)
     show marccc at pos_perso
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
     "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
     show marccc at pos_perso
     M_whisper "Tiens. On ne m'avait pas dit que la forêt était inhabité?"
-    scene sacrifice with Dissolve(.5)
+    scene sacrifice at background
+    with Dissolve(.5)
     M "Mais... Mais qu'est ce qu'il se passe là-bas?! Mais qu'est ce que... Il y a quelqu'un dans le feu ?!"
     M "Bordel! Je crois que je n'aurais jamais dû être ici. Il faut que j'appelle le pilote pour le prévenir de ce qu'il se passe ici."
     "Essaie de fouiller ses poches."
@@ -148,16 +155,19 @@ label start:
         jump QTE_reussi
 
 label pendaison:
-    scene branche with Dissolve(.5)
+    scene branche at background
+    with Dissolve(.5)
     "Marc n'a pas réussi à se défaire de son parachute."
     "Marc s'est pendu à une branche."
     jump start
     
 
 label QTE_reussi:
-    scene sacrifice with Dissolve(.5)
+    scene sacrifice at background
+    with Dissolve(.5)
     "Le rituel se finit et les personnes masquées partent sans avoir remarqués Marc."
-    scene branche with Dissolve(.5)
+    scene branche at background
+    with Dissolve(.5)
     show marccc at pos_perso
     M "Il faut que je réussisse à descendre de l'arbre sans me blesser."
     M "Je vais devoir passer par une de ses deux branches. La plus fine me permettrait de descendre plus rapidement, mais la plus large me paraît plus solide."
@@ -172,7 +182,8 @@ label QTE_reussi:
             jump pas_blesse
 
 label QTE_echoue:
-    scene sacrifice with Dissolve(.5)
+    scene sacrifice at background
+    with Dissolve(.5)
     "Crack!"
     "Les personnes autours du feu remarquent Marc et commencent à courir vers lui."
     show marccc at pos_perso
@@ -183,7 +194,8 @@ label QTE_echoue:
     jump dans_la_cage
 
 label blesse:
-    scene foret_claireee with Dissolve(.5)
+    scene foret_claireee at background
+    with Dissolve(.5)
     show marccc at pos_perso
     M "Aïe! Je me suis tordu la cheville. C'est vraiment le pire moment pour ça!"
     M "Bon, maintenant je dois trouver un endroit pour me cacher et soigner ma cheville."
@@ -191,14 +203,16 @@ label blesse:
     jump balade_foret
 
 label pas_blesse:
-    scene foret_claireee with Dissolve(.5)
+    scene foret_claireee at background
+    with Dissolve(.5)
     show marccc at pos_perso
     M "Ouf! C'était juste. Il faut que je trouve un endroit pour me reposer "
     $ blesse = False
     jump balade_foret
 
 label balade_foret:
-    scene baladeforettt with Dissolve(.5)
+    scene baladeforettt at background
+    with Dissolve(.5)
     show marccc at pos_perso 
     M "Bon, je prend quel chemin maintenant."
     menu:
@@ -209,7 +223,8 @@ label balade_foret:
             jump voir_village
 
 label voir_village:
-    scene entreevillageee with Dissolve(.5)
+    scene entreevillageee at background
+    with Dissolve(.5)
     show marccc at pos_perso
     M "Oh! Un village! Est-ce qu'ils savent ce qui se passe dans leur forêt?"
     M "Est-ce que j'y vais?"
@@ -221,7 +236,8 @@ label voir_village:
             jump balade_foret
 
 label entrer_village:
-    scene entreevillageee with Dissolve(.5)
+    scene entreevillageee at background
+    with Dissolve(.5)
     show marccc at pos_perso
     M "C'est un très beau village. Bon j'y vais."
     "Marc se rapproche et une alarme se déclenche directement."
@@ -233,14 +249,15 @@ label entrer_village:
     
 
 label fuite_cabane:
-    scene lit with Dissolve(.5)
+    scene lit at background
+    with Dissolve(.5)
     "Marc aperçoit une cabane dans la forêt."
     show marccc at pos_perso
     M "Vite! Une cabane! Il faut que j'aille me réfugier là-bas."
     "Il rentre dans la cabane."
     show marccc at pos_perso
     M_whisper "Je vais me cacher sous le lit."
-    scene lit
+    scene lit at background
     show tristanmask at pos_perso1
     show selenemask at pos_perso2
     secte_shout "Bon! Il ne doit pas être ici. Continuez de fouiller la forêt!"
@@ -248,7 +265,8 @@ label fuite_cabane:
     jump reveil_cabane
 
 label reveil_cabane:
-    scene bureau with Dissolve(.5)
+    scene bureau at background
+    with Dissolve(.5)
     "Marc se réveille attaché à une chaise."
     show marccc at pos_perso
     show tristanmask at pos_perso2
@@ -270,7 +288,8 @@ label cabane_rencontre_A:
     jump revelation_policier 
 
 label cabane:
-    scene lit with Dissolve(.5)
+    scene lit at background
+    with Dissolve(.5)
     "Il aperçoit une cabane isolée"
     show marccc at pos_perso
     M "Tiens! Une cabane. Elle n'a pas l'air d'être habitée."
@@ -278,7 +297,8 @@ label cabane:
     jump reveil_cabane
 
 label capture_entree_village:
-    scene entreevillageee with Dissolve(.5)
+    scene entreevillageee at background
+    with Dissolve(.5)
     "Marc se déplace lentement à cause de sa blessure"
     show marccc at pos_perso
     M_shout "Merde! Ils sont en train de me rattraper!"
@@ -286,7 +306,8 @@ label capture_entree_village:
     jump dans_la_cage
 
 label dans_la_cage:
-    scene cage with Dissolve(1)
+    scene cage at background
+    with Dissolve(1)
     A3 "Bonjour Marc, comment allez-vous?"
     "Marc se réveille."
     show marccc at pos_perso
@@ -308,7 +329,8 @@ label dans_la_cage:
     jump cadavre_cage
 
 label cadavre_cage:
-    scene cage with Dissolve(.5)
+    scene cage at background
+    with Dissolve(.5)
     "Marc examine la cage dans laquelle il a été enfermé."
     "Il remarque un cadavre à ses pieds."
     show marccc at pos_perso
@@ -323,7 +345,8 @@ label cadavre_cage:
     
 
 label forcer_cage:
-    scene cage with Dissolve(.5)
+    scene cage at background
+    with Dissolve(.5)
     show marccc at pos_perso
     M "La cage ne m'a pas l'air bien solide. Je vais essayer de sortir en forçant la serrure."
     "Marc secoue la porte de sa cage avec toute sa force."
@@ -337,7 +360,8 @@ label forcer_cage:
 
 label mort_cage:
     B "Bon, ça suffit! Tu commences à m'énerver!"
-    scene game_over with Dissolve(.5)
+    scene game_over at background
+    with Dissolve(.5)
     "Le garde s'approche de la cage et décapite Marc."
     jump dans_la_cage
 
@@ -395,7 +419,8 @@ label mettre_masque:
 
 
 label revelation_policier:
-    scene bureau with Dissolve(.5)
+    scene bureau at background
+    with Dissolve(.5)
     menu:
         "Que faites-vous?"
         "Aider le policier à démanteler la secte":
@@ -404,7 +429,8 @@ label revelation_policier:
             jump sortir_village
 
 label demanteler_secte:
-    scene bureau with Dissolve(.5)
+    scene bureau at background
+    with Dissolve(.5)
     A2 "Tout ce que vous devez savoir, c'est que vous vous trouvez dans la secte Rexma." 
     A2 "Une secte cachée dans cette forêt qui sacrifie les personnes qui osent entrer dans leur forêt."
     M "Mais qui est Rexma ?"
@@ -418,26 +444,30 @@ label demanteler_secte:
 
 
 label sortir_village:
-    scene entreevillageee with Dissolve(.5)
+    scene entreevillageee at background
+    with Dissolve(.5)
     show marccc at pos_perso
     show tristan at pos_perso2
     M "Je veux m'en aller de cette forêt. Je n'en peux plus. Je veux retourner chez moi"
     A2 "Ne t'en fais pas, je comprends. Je vais t'accompagner jusqu'à la route la plus proche"
     A2 "Ils ont posé plusieurs pièges pour empêcher les victimes de s'enfuir."
     "Ils marchent pendant plusieurs heures et approchent de la sortie de la forêt."
-    scene foret_sombre with Dissolve(.5)
+    scene foret_sombre at background
+    with Dissolve(.5)
     A2 "Nous nous séparons donc ici. Rentre bien chez toi, mon ami."
     M "Merci Tristan, je te dois la vie, je ne pourrais jamais assez te remercier. Je m'en veux de te laisser ici mais je n'en peux plus. Je te souhaite bonne chance."
     A2 "Il y a une ville de ce côté à environ une heure de marche."
     "Marc regarde Tristan retourner dans la forêt"
-    scene foret_sombre with Dissolve(.5)
+    scene foret_sombre at background
+    with Dissolve(.5)
     show selenemask at pos_perso
     show tristan at pos_perso2
     A_shout "Qu'est-ce que tu fais là toi! Ne me dis pas que tu essayais de t'enfuir!"
     A2 "Non, c'est pas ça je cherchais le fugi..."
     "Pan!"
     "Marc voit Tristan se faire abattre froidement d'un simple coup de feu."
-    scene foret_sombre with Dissolve(.5)
+    scene foret_sombre at background
+    with Dissolve(.5)
     show marccc at pos_perso1
     M "Noooon, Tristaaaaan!"
     menu:
@@ -448,7 +478,8 @@ label sortir_village:
             jump fuite
 
 label fuite:
-    scene foret_sombre with Dissolve(.5)
+    scene foret_sombre at background
+    with Dissolve(.5)
     show marccc at pos_perso
     M "Je suis désolé Tristan, je n'ai pas le courage d'y retourner pour te venger."
     "Marc a decidé de s'enfuir."
@@ -457,11 +488,14 @@ label fuite:
     return
 
 label reprendre_mission:
-    scene foret_sombre with Dissolve(.5)
+    scene foret_sombre at background
+    with Dissolve(.5)
     M_shout "Non! Tristan est mort à cause de moi. Je dois le venger, je ne pourrais plus me regarder dans la glace sinon."
-    scene baladeforet with Dissolve(.5)
+    scene baladeforet at background
+    with Dissolve(.5)
     M "Je vais retourner à la cabane de Tristan, Je ne peux pas laisser mes émotions me contrôler."
-    scene bureau with Dissolve(.5)
+    scene bureau at background
+    with Dissolve(.5)
     secte_shout "Le fugitif est là-bas!"
     M "Il faut que je me dépêche de rentrer"
     jump minijeux_serrure
@@ -487,14 +521,16 @@ label fouiller_cabane_fuite:
                 jump lit_fouille
 
 label lit_fouille:
-    scene lit with Dissolve(.5)
+    scene lit at background
+    with Dissolve(.5)
     "Marc cherche sous le matelas."
     $ cle_trouve = True
     "Parfait, la clé. C'est sûrement celle du tiroir de son bureau."
     jump fouiller_cabane_fuite
 
 label tiroir_fouille:
-    scene bureau with Dissolve(.5)
+    scene bureau at background
+    with Dissolve(.5)
     M "OK. Qu'est-ce qu'on a là dedans?"
     "Marc ouvre le tiroir."
     "Il trouve un journal et une pièce talkie-walkie."
@@ -508,7 +544,8 @@ label tiroir_fouille:
     jump voir_maire
 
 label voir_maire:
-    scene maisonmaire with Dissolve(.5)
+    scene maisonmaire at background
+    with Dissolve(.5)
     M "OK. Il est 7h30, il ne me reste plus beaucoup de temps."
     M "Il faut que je me dépêche de retrouver la pièce du talkie-walkie."
     #chrono 
@@ -525,7 +562,8 @@ label trouve_a_temps:
         jump info_eglise
 
 label trouve_pas_a_temps:
-    scene maisonmaire with Dissolve(.5)
+    scene maisonmaire at background
+    with Dissolve(.5)
     C "Qu'est ce que vous faites chez moi Marc ?!"
     M "Mince, je n'ai pas réussi à trouver la pièce à temps"
     C "Venez tous ici! J'ai retrouvé le fugitif!"
@@ -533,7 +571,8 @@ label trouve_pas_a_temps:
     jump voir_maire
 
 label se_cacher:
-    scene maisonmaire with Dissolve(.5)
+    scene maisonmaire at background
+    with Dissolve(.5)
     M "Je l'ai trouvé, il me reste plus qu'à aller chercher la dernière."
     "La porte de l'entrée s'ouvre brusquement."
     M_whisper "Mince, il est déjà là, il faut que je sorte sans faire de bruit. Il ne faut pas qu'il ne me remarque."
@@ -548,7 +587,8 @@ label se_cacher:
         jump info_eglise
 
 label reussi_cacher:
-    scene maisonmaire with Dissolve(.5)
+    scene maisonmaire at background
+    with Dissolve(.5)
     secte_shout "Le fugitif s'est infiltré dans la maison du maire! Retrouvez-le avant qu'il en sorte!"
     "Après de longues minutes d'agitation, les personnes masquées sortent de la maison pour chercher aux alentours"
     M "J'ai le morceau que je cherchais."
@@ -564,9 +604,11 @@ label pas_reussi_cacher:
     jump se_cacher
 
 label eglise:
-    scene entreevillage with Dissolve(.5)
+    scene entreevillage at background
+    with Dissolve(.5)
     "Marc arrive dans l'Église."
-    scene eglisee with Dissolve(.5)
+    scene eglisee at background
+    with Dissolve(.5)
     M "Il faut que je trouve le dernier morceau du talkie-walkie et je pourrai contacter la police."
     "Il aperçoit le dernier morceau à droite de l'hôtel."
     M "Ah! le voilà."
@@ -588,7 +630,8 @@ label puzzle:
         jump donjon_rexma_bien
 
 label donjon_rexma_mal:
-    scene donjonnn with Dissolve(.5)
+    scene donjonnn at background
+    with Dissolve(.5)
     M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituels!"
     C_shout "Marc! Mais quelle surprise que je te retrouve ici."
     C_shout "Tu t'es bien caché, mais maintenant c'est fini! Tu ne peux plus t'échapper! Tu ne peux plus te cacher!"
@@ -602,7 +645,8 @@ label donjon_rexma_mal:
     jump fin_3_mal
     
 label donjon_rexma_bien:
-    scene donjonnn with Dissolve(.5)
+    scene donjonnn at background
+    with Dissolve(.5)
     M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituel!"
     A2 "Exactement! C'est ici qu'ils font leurs rituels."
     C_shout "Marc! Tristan Mais quelle surprise que de vous retrouver ici."
@@ -618,7 +662,8 @@ label donjon_rexma_bien:
     jump fin_2_bien
     
 label fin_2_bien:
-    scene donjonnn with Dissolve(.5)
+    scene donjonnn at background
+    with Dissolve(.5)
     "Julian se rapprocha de Marc et lui assena un coup de couteau rapide."
     "Tristan dégaina un pistolet et tira deux fois sur Julian." 
     "Pan! Pan!"
@@ -631,7 +676,8 @@ label fin_2_bien:
     return
 
 label fin_3_mal:
-    scene donjonnn with Dissolve(.5)
+    scene donjonnn at background
+    with Dissolve(.5)
     "Marc se jetta sur le Joyeux"
     "Julian évita Marc d'un simple mouvement fluide et précis"
     "Sélène, cachée dans l'ombre de la porte apparaît et décapita Marc avec une Hache à deux mains."
@@ -643,7 +689,8 @@ label fin_3_mal:
     return
 
 label info_eglise:
-    scene entreevillage with Dissolve(.5)
+    scene entreevillage at background
+    with Dissolve(.5)
     A2 "Marc, viens."
     M "Oui?"
     A2 "Il ne nous reste qu'à trouver le dernier morceau du talkie-walkie."
@@ -651,7 +698,8 @@ label info_eglise:
     M "Et s'ils nous trouvent avant qu'on les appelle ?"
     A2 "J'ai fait diversion pour nous laisser le temps de le trouver."
     "Marc et Tristan arrivent dans l'Église."
-    scene eglisee with Dissolve(.5)
+    scene eglisee at background 
+    with Dissolve(.5)
     M "Il faut qu'on trouve le dernier morceau du talkie-walkie et nous pourrons contacter la police."
     "Il aperçoit le dernier morceau à droite de l'hôtel."
     M "Ah! Le voilà."
