@@ -589,7 +589,7 @@ label donjon_rexma_mal:
     M_shout "TU NE T'ENFUIRAS PAS!"
     jump fin_3_mal
     
-label donjon_rexma_mal:
+label donjon_rexma_bien:
     scene donjonnn with Dissolve(.5)
     M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituel!"
     A2 "Exactement! C'est ici qu'ils font leurs rituels."
