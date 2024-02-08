@@ -22,6 +22,7 @@ define A_whisper = Character('Homme masqué', color="#312d69", what_size = 25)
 define A2_whisper = Character('Sergent Tristan', color="#ad0d0d", what_size = 25)
 define A3_whisper = Character('Inconnu', color="#4d2614", what_size = 25)
 define secte_whisper = Character('Personnes masquées', color="#a5a5a5", what_size = 25)
+define P = Character('Policier', color="#1100f8", what_size = 25)
 
 
 
@@ -449,7 +450,7 @@ label fouiller_cabane_fuite:
                 jump fouiller_cabane_fuite
         "Fouiller son lit":
             if cle_trouve:
-                M"J'ai déjà fouiller là-bas"
+                M "J'ai déjà fouiller là-bas"
             else:
                 M "Je vais aller fouiller son lit"
                 jump lit_fouille
@@ -465,17 +466,26 @@ label tiroir_fouille:
     scene bureau with Dissolve(.5)
     M "OK. Qu'est-ce qu'on a là dedans?"
     "Marc ouvre le tiroir."
-    "Il trouve un journal, un talkie-walkie ainsi qu'une étrange pièce."
-    M "Qu'est donc cette pièce? Étrange."
+    "Il trouve un journal et une pièce talkie-walkie."
     "Marc ouvre le journal"
-    "Lorsque j'ai déplacer le corps du gars que le Joyeux venait d'assassiner aujourd'hui,J'ai vu qu'il s'agissait de son bras-droit et j'ai trouvé une pièce étrange sur lui je l'ai alors g..."
-    "Je dois ... deuxième et troisième pièces. Elle... dans la maison du ... ou sinon ... église."
-    "J'ai remarqué que le Joyeux sort de chez lui de 7h20 à 7h30 tout les matins pour aller à ... Je devrai aller fouiller."
-     
+    "Vous vous trouvez dans la secte Rexma, une secte caché dans cette forêt qui sacrifice les personnes qui osent entrer dans leur forêt."
+    "Je dois ... deuxième et troisième pièces de la radio. Elles... dans la maison du ... ou sinon ... église."
+    "J'ai remarqué que le Joyeux sort de chez lui de 7h20 à 7h40 tout les matins pour aller à ... Je devrai aller fouiller."
+    M "Je n'arrive pas à tout comprendre. Mais il faut que je retrouve les deux pièces manquantes"
+    M "Si je comprend bien il devrairt en avoir une à l'église et une dans une maison."
+    M "\" la maison du \" ça doit faire référence à la maison du maire. Par chance, il est presque 7h20, je vais donc commencer par chercher là-bas."
+    jump voir_maire
 
 label voir_maire:
-    jump trouve_a_temps
-    jump trouve_pas_a_temps
+    scene maisonmaire with Dissolve(.5)
+    M "OK. Il est 7h30, il ne me reste plus beaucoup de temps."
+    M "Il faut que je me dépêche de retrouver la pièce du talkie-walkie."
+    #chrono 
+    #il faut fouiller la maison du maire *
+    if piece_trouve:
+        jump trouve_a_temps
+    else:
+        jump trouve_pas_a_temps
 
 label trouve_a_temps:
     if policier_mort :
@@ -484,34 +494,145 @@ label trouve_a_temps:
         jump info_eglise
 
 label trouve_pas_a_temps:
+    scene maisonmaire with Dissolve(.5)
+    C "Qu'est ce que vous faites chez moi Marc ?!"
+    M "Mince, je n'ai pas réussi à trouver la pièce à temps"
+    C "Venez tous ici! J'ai retrouvé le fugitif!"
+    "Les personnes masquées se jettent sur Marc et le frappent à mort."
     jump voir_maire
 
 label se_cacher:
-    jump reussi_cacher
-    jump pas_reussi_cacher
+    scene maisonmaire with Dissolve(.5)
+    M "Je l'ai trouvé, il me reste plus qu'à aller chercher la dernière."
+    "La porter de l'entrée s'ouvre brusquement."
+    M_whisper "mince, il est déjà il faut que je sorte sans faire de bruit. Il ne faut pas qu'il ne me remarque."
+    if policier_mort :
+        menu:
+            "Où vais-je me cacher?"
+            "Se cacher sous le lit":
+                jump reussi_cacher
+            "Sortir par la fenêtre":
+                jump pas_reussi_cacher
+    else:
+        jump info_eglise
 
 label reussi_cacher:
+    scene maisonmaire with Dissolve(.5)
+    secte_shout "Le fugitif s'est infiltré dans la maison du maire! Retrouvez-le avant qu'il en sorte!"
+    "Après de longues minutes d'agitation, les personnes masquées sortent de la maison pour chercher aux alentours"
+    M "j'ai le morceau que je cherchais."
+    M "Il faut que j'aille chercher la dernière pièce pièce"
     jump eglise
 
 label pas_reussi_cacher:
+    scene maisonmaire
+    "Marc se dirige discrètement vers la fenêtre et essaie de l'ouvrir."
+    M "Merde, elle ne s'ouvre pas. Qu'est-ce que je vais faire."
+    secte_shout "Il est là! Tuez-le!"
+    "Les personnes masquées se jettent sur Marc et le frappent à mort."
     jump se_cacher
 
-label puzzle:
-    jump donjon_rexma
+label eglise:
+    scene entreevillage with Dissolve(.5)
+    "Marc arrive dans l'Église."
+    scene eglisee with Dissolve(.5)
+    M "Il faut que je trouve le dernier morceau du talkie-walkie et je pourrai contacter la police."
+    "Il aperçoit le dernier morceau à droite de l'hôtel."
+    M "Ah! le voilà."
+    "Marc allume la radio et contacte la police."
+    P "Oui, Allo commissariat de pouletdeborgue, qu'est ce que nous pouvons faire pour vous."
+    M "Oui, Je vous appelle car je suis dans un village de meurtrier. Il y a énormément de cadavre ici, ils en ont après moi. Ils viennent de tuer un policier! Dépêchez-vous! Je ne vais pas pouvoir attendre longtemps."
+    P "Du calme monsieurs, je comprend votre situation mais essayez de vous calmer. Vous me dites que des personnes assassinent des gens là où vous vous trouvez?"
+    M "Oui et ils vont finir par m'avoir aussi! On est dans la forêt à côté de votre ville! Dépêchez vous je vous en supplie!"
+    P "Très bien, je vous envoie tout nos policier dans les environs et des renforts arriveront plus tard. Ne tentez rien jusqu'à ce qu'ils arrivent."
+    P "Ils seront là dans moins de 10 minutes. Gardez courage."
+    M_whisper "Il y a une porte de ce côté, je vais me cacher par là."
+    jump puzzle
 
-label donjon_rexma:
+label puzzle:
+    "Ils faut que je résoudre ce puzzle pour passer. Je ne doit pas traîner, ils ne tarderont pas à arriver ici"
     if policier_mort:
-        jump fin_3_mal
+        jump donjon_rexma_mal
     else:
-        jump fin_2_bien
+        jump donjon_rexma_bien
+
+label donjon_rexma_mal:
+    scene donjonnn with Dissolve(.5)
+    M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituel!"
+    C_shout "Marc! Mais quelle surprise que je te retrouve ici."
+    C_shout "Tu t'es bien caché mais maintenant c'est fini! Tu ne peux plus t'échapper! Tu ne peux plus te cacher!"
+    M_shout "AH, AH, tu te trompes vieux dégénéré! J'ai prévenu la police, ils seront là d'une minute à l'autre! TU ne pourras plus te cacher. Vous êtes tous foutu!"
+    C "Je le sais bien, mais... mais que vont-ils trouver ici? Dis-moi. J'ai brûlé tout les secrets que gardait le village, les membres du culte se sont déjà tous enfuie!"
+    C "Il ne restera rien à l'arrivée des policiers!"
+    M "Mais... Impossible... je..."
+    M_shout "Tu resteras avec moi pour les attendre! Je te laisserais pas t'enfuire aussi! Tu seras jugé pour tout tes meurtres!"
+    C "Et comment comptes-tu t'y prendre?"
+    M_shout "TU NE T'ENFUIRAS PAS!"
+    jump fin_3_mal
+    
+label donjon_rexma_mal:
+    scene donjonnn with Dissolve(.5)
+    M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituel!"
+    A2 "Exactement! C'est ici qu'ils font leurs rituels."
+    C_shout "Marc! Tristan Mais quelle surprise que de vous retrouver ici."
+    C_shout "Vous vous êtes bien caché mais maintenant c'est fini! Vous ne pouvez plus vous échapper! Vous ne peux plus vous cacher!"
+    M_shout "AH, AH, tu te trompes vieux dégénéré! Nous avons prévenu la police, ils seront là d'une minute à l'autre! TU ne pourras plus te cacher. Vous êtes tous foutu!"
+    C "Je le sais bien, mais... Mais que vont-ils trouver ici?! Dis-moi. J'ai brûlé tout les secrets que gardait le village, les membres du culte se sont déjà tous enfuie!"
+    C "Il ne restera rien à l'arrivée des policiers!"
+    M "Mais... Impossible... je..."
+    M_shout "Tu resteras avec nous pour les attendre! Je te laisserais pas t'enfuire aussi! Tu seras jugé pour tout tes meurtres!"
+    C "Et comment comptes-tu t'y prendre?"
+    "Julian le Joyaux sort un long couteau de son dos."
+    M_shout "TU NE T'ENFUIRAS PAS!"
+    jump fin_2_bien
     
 label fin_2_bien:
+    scene donjonnn with Dissolve(.5)
+    "Julian se rapprocha de Marc et lui assenna un coup de couteau rapide."
+    "Tristan dégaina un pistolet et tira deux fois sur Julian." 
+    "Pan! Pan!"
+    "Julian, abatu, s'écroula sur le sol"
+    "Les sirènes des voitures de police se firent entendrent."
+    "Quand la police arriva sur les lieux, tout les bâtiments avaient brûlé."
+    "Les policiers ont ammenés Marc à l'hôpital et fût soigner."
+    "Il ne restait que des cendres. Mais grâce aux efforts de Marc et Tritan, tout les membres du culte furent retrouvés et condamnés."
+    
     return
 
 label fin_3_mal:
+    scene donjonnn with Dissolve(.5)
+    "Marc se jetta sur le Joyeux"
+    "Julian évita Marc d'un simple mouvement fluide et précis"
+    "Sélène, cachée dans l'ombre de la porte apparait et décapita Marc avec une Hache à deux mains."
+    C "Au final, tu as été le plus fou de nous deux a croire que tu pouvais nous combattre."
+    "Les sirènes des voitures de police se firent entendrent."
+    C "J'ai encore le temps de m'en aller. Tu n'auras donc servi à rien. Tu n'as causé que destruction et violence, jeune pêcheur."
+    "Quand la police arriva sur les lieux, tout les bâtiments avaient brûlé."
+    "Il ne restait que des cendres. Et faute de preuve l'affaire de la forêt fût classé sans suite."
     return
 
 label info_eglise:
+    scene entreevillage with Dissolve(.5)
+    A2 "Marc, viens."
+    M "Oui?"
+    A2 "Il ne nous reste qu'à trouver le dernier morceau du talkie-walkie."
+    A2 "Il devrait être dans l'église. Une fois que nous l'auront trouvé, nous appelerons la police directement."
+    M "Et s'ils nous trouvent avant qu'on les appelle ?"
+    A2 "J'ai fais diversion pour nous laisser le temps de le trouver."
+    "Marc et Tristan arrivent dans l'Église."
+    scene eglisee with Dissolve(.5)
+    M "Il faut qu'on trouve le dernier morceau du talkie-walkie et nous pourrons contacter la police."
+    "Il aperçoit le dernier morceau à droite de l'hôtel."
+    M "Ah! le voilà."
+    "Marc répar  la radio et laisse Tristan contacter la police."
+    P "Oui, Allo commissariat de pouletdeborgue, qu'est ce que nous pouvons faire pour vous."
+    A2 "Oui, Je vous appelle car je suis dans un village de meurtrier. Il y a énormément de cadavre ici, ils en ont après moi et tout les gens qui rentrent dans le village. Dépêchez-vous! Nous ne pouvons pas attendre longtemps."
+    P "Du calme monsieurs, je comprend votre situation mais essayez de vous calmer. Vous me dites que des personnes assassinent des gens là où vous vous trouvez?"
+    M "Oui et ils vont finir par nous avoir aussi! On est dans la forêt à côté de votre ville! Dépêchez vous je vous en supplie!"
+    P "Très bien, je vous envoie tout nos policier dans les environs et des renforts arriveront plus tard. Ne tentez rien jusqu'à ce qu'ils arrivent."
+    P "Ils seront là dans moins de 10 minutes. Gardez courage."
+    M_whisper "Il y a une porte de ce côté, nous devrions nous cacher par là."
+    A2 "Oui, allons-y"
     jump puzzle
 
 
