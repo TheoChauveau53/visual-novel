@@ -79,7 +79,7 @@ transform pos_sac:
 transform background:
     xzoom 1.25 yzoom 1.3
 transform backgroundvillage:
-    xzoom .75 yzoom .75
+    xzoom .5 yzoom .5
 init:
     $ cle_trouve = False
     $ open = False
@@ -108,9 +108,10 @@ init python:
 label start:
     scene avion at background 
     with Dissolve(.5)
-    show marccc at pos_perso
+
     show screen sac
     "On approche du site."
+    show marccc at pos_perso
     com_shout "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
     show marccc at pos_perso
     M_shout "OK! Souhaite-moi bonne chance!"
@@ -157,7 +158,7 @@ label start:
         jump QTE_reussi
 
 label pendaison:
-    scene branche at background
+    scene branche at backgroundvillage
     with Dissolve(.5)
     "Marc n'a pas réussi à se défaire de son parachute."
     "Marc s'est pendu à une branche."
@@ -168,7 +169,7 @@ label QTE_reussi:
     scene sacrifice at background
     with Dissolve(.5)
     "Le rituel se finit et les personnes masquées partent sans avoir remarqués Marc."
-    scene branche at background
+    scene branche at backgroundvillage
     with Dissolve(.5)
     show marccc at pos_perso
     M "Il faut que je réussisse à descendre de l'arbre sans me blesser."
