@@ -79,7 +79,7 @@ transform pos_sac:
 transform background:
     xzoom 1.25 yzoom 1.3
 transform backgroundvillage:
-    xzoom .5 yzoom .5
+    xzoom .3 yzoom .3
 init:
     $ cle_trouve = False
     $ open = False
@@ -158,7 +158,7 @@ label start:
         jump QTE_reussi
 
 label pendaison:
-    scene branche at backgroundvillage
+    scene branche 
     with Dissolve(.5)
     "Marc n'a pas réussi à se défaire de son parachute."
     "Marc s'est pendu à une branche."
@@ -169,7 +169,7 @@ label QTE_reussi:
     scene sacrifice at background
     with Dissolve(.5)
     "Le rituel se finit et les personnes masquées partent sans avoir remarqués Marc."
-    scene branche at backgroundvillage
+    scene branche 
     with Dissolve(.5)
     show marccc at pos_perso
     M "Il faut que je réussisse à descendre de l'arbre sans me blesser."
@@ -274,15 +274,16 @@ label reveil_cabane:
     show marccc at pos_perso
     show tristanmask at pos_perso2
     M_shout "Qu'est-ce... Qu'est-ce qu'il se passe! Pourquoi je suis attaché ?!"
-    A "Qu'est-ce que vous faites chez moi?"
+   
     jump cabane_rencontre_A
 
 label cabane_rencontre_A:
-    show tristan at pos_perso2
+    show tristanmask at pos_perso2
     show marccc at pos_perso
     A "Voici mon repère jeune homme, comment vous vous sentez ?"
     M "Disons que ça pourrait aller mieux, qu'est-ce qu'il se passe ici ?"
     A "Je vais vous en parler. Mais, tout d'abord, place aux présentations."
+    show tristan at pos_perso2
     A2 "Je m'appelle Tristan, je suis sergent de police et j'enquête sur la secte depuis 6 mois. Et vous, comment vous vous êtes retrouvé ici ?"
     M "Je m'appelle Marc. J'ai fait du saut en parachute, et me suis retrouvé coincé ici après que mon parachute se soit coincé dans un arbre."
     A2 "Très bien marc, je vais vous poser une simple question. J'ai assez d'éléments pour faire stopper les activités de la secte." 
@@ -457,6 +458,8 @@ label sortir_village:
     "Ils marchent pendant plusieurs heures et approchent de la sortie de la forêt."
     scene foret_sombre at background
     with Dissolve(.5)
+    show marccc at pos_perso
+    show tristan at pos_perso2
     A2 "Nous nous séparons donc ici. Rentre bien chez toi, mon ami."
     M "Merci Tristan, je te dois la vie, je ne pourrais jamais assez te remercier. Je m'en veux de te laisser ici mais je n'en peux plus. Je te souhaite bonne chance."
     A2 "Il y a une ville de ce côté à environ une heure de marche."
