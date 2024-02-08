@@ -477,7 +477,7 @@ label fouiller_cabane_fuite:
 label lit_fouille:
     scene lit with Dissolve(.5)
     "Marc cherche sous le matelas."
-    cle_trouve = True
+    $ cle_trouve = True
     "Parfait, la clé. C'est sûrement celle du tiroir de son bureau."
     jump fouiller_cabane_fuite
 
