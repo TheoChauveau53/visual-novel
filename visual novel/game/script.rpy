@@ -76,6 +76,7 @@ transform pos_sac:
     xzoom .3 yzoom .3
     xpos .0 ypos .1
 init:
+    $ cle_trouve = False
     $ open = False
     $ nbr_forcage = 0
     $ nbr_morceaux_mince = 0
