@@ -157,6 +157,7 @@ label pendaison:
 label QTE_reussi:
     scene sacrifice with Dissolve(.5)
     "Le rituel se finit et les personnes masquées partent sans avoir remarqués Marc."
+    scene branche with Dissolve(.5)
     show marccc at pos_perso
     M "Il faut que je réussisse à descendre de l'arbre sans me blesser."
     M "Je vais devoir passer par une de ses deux branches. La plus fine me permettrait de descendre plus rapidement, mais la plus large me paraît plus solide."
@@ -239,6 +240,7 @@ label fuite_cabane:
     "Il rentre dans la cabane."
     show marccc at pos_perso
     M_whisper "Je vais me cacher sous le lit."
+    scene lit
     show tristanmask at pos_perso1
     show selenemask at pos_perso2
     secte_shout "Bon! Il ne doit pas être ici. Continuez de fouiller la forêt!"
@@ -255,7 +257,8 @@ label reveil_cabane:
     jump cabane_rencontre_A
 
 label cabane_rencontre_A:
-    scene bureau with Dissolve(.5)
+    show tristan at pos_perso2
+    show marccc at pos_perso
     A "Voici mon repère jeune homme, comment vous vous sentez ?"
     M "Disons que ça pourrait aller mieux, qu'est-ce qu'il se passe ici ?"
     A "Je vais vous en parler. Mais, tout d'abord, place aux présentations."
@@ -415,19 +418,28 @@ label demanteler_secte:
 
 
 label sortir_village:
-    scene entreevillage with Dissolve(.5)
+    scene entreevillageee with Dissolve(.5)
+    show marccc at pos_perso
+    show tristan at pos_perso2
     M "Je veux m'en aller de cette forêt. Je n'en peux plus. Je veux retourner chez moi"
     A2 "Ne t'en fais pas, je comprends. Je vais t'accompagner jusqu'à la route la plus proche"
     A2 "Ils ont posé plusieurs pièges pour empêcher les victimes de s'enfuir."
     "Ils marchent pendant plusieurs heures et approchent de la sortie de la forêt."
+    scene foret_sombre with Dissolve(.5)
     A2 "Nous nous séparons donc ici. Rentre bien chez toi, mon ami."
     M "Merci Tristan, je te dois la vie, je ne pourrais jamais assez te remercier. Je m'en veux de te laisser ici mais je n'en peux plus. Je te souhaite bonne chance."
-    A2 "Salut, Il y a une ville de ce côté à environ une heure de marche."
+    A2 "Il y a une ville de ce côté à environ une heure de marche."
     "Marc regarde Tristan retourner dans la forêt"
-    A3_shout "Qu'est-ce que tu fais là toi! Ne me dis pas que tu essayais de t'enfuir!"
-    A2 "Non, c'est pas ça je cherchais le fugi... Pan!"
+    scene foret_sombre with Dissolve(.5)
+    show selenemask at pos_perso
+    show tristan at pos_perso2
+    A_shout "Qu'est-ce que tu fais là toi! Ne me dis pas que tu essayais de t'enfuir!"
+    A2 "Non, c'est pas ça je cherchais le fugi..."
+    "Pan!"
     "Marc voit Tristan se faire abattre froidement d'un simple coup de feu."
-    M "Noooon, Tristaaaaan."
+    scene foret_sombre with Dissolve(.5)
+    show marccc at pos_perso1
+    M "Noooon, Tristaaaaan!"
     menu:
         "Qu'est-ce que je vais faire?!"
         "Reprendre la mission du GOAT Tristan":
