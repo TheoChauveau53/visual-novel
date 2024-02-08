@@ -646,10 +646,10 @@ label eglise:
     scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     "Marc arrive dans l'Église."
-    scene eglisee at backgroundforet
+    scene egliseee at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso
-    show tristan at pos_perso1
+
     M "Il faut que je trouve le dernier morceau du talkie-walkie et je pourrai contacter la police."
     "Il aperçoit le dernier morceau à droite de l'hôtel."
     M "Ah! le voilà."
@@ -731,7 +731,7 @@ label fin_3_mal:
     "Julian évita Marc d'un simple mouvement fluide et précis"
     "Sélène, cachée dans l'ombre de la porte apparaît et décapita Marc avec une Hache à deux mains."
     show juliannn at pos_perso
-    show Selene at pos_perso1
+    show seleneee at pos_perso1
     C "Au final, tu as été le plus fou de nous deux a croire que tu pouvais nous combattre."
     "Les sirènes des voitures de police se firent entendrent."
     C "J'ai encore le temps de m'en aller. Tu n'auras donc servi à rien. Tu n'as causé que destruction et violence, jeune pêcheur."
