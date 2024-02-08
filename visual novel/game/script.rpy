@@ -80,6 +80,8 @@ transform background:
     xzoom 1.25 yzoom 1.3
 transform backgroundvillage:
     xzoom .3 yzoom .3
+transform foretdark:
+    xzoom 1.5 yzoom 1.5
 init:
     $ cle_trouve = False
     $ open = False
@@ -456,7 +458,7 @@ label sortir_village:
     A2 "Ne t'en fais pas, je comprends. Je vais t'accompagner jusqu'à la route la plus proche"
     A2 "Ils ont posé plusieurs pièges pour empêcher les victimes de s'enfuir."
     "Ils marchent pendant plusieurs heures et approchent de la sortie de la forêt."
-    scene foret_sombre at background
+    scene foret_sombre at foretdark
     with Dissolve(.5)
     show marccc at pos_perso
     show tristan at pos_perso2
@@ -464,7 +466,7 @@ label sortir_village:
     M "Merci Tristan, je te dois la vie, je ne pourrais jamais assez te remercier. Je m'en veux de te laisser ici mais je n'en peux plus. Je te souhaite bonne chance."
     A2 "Il y a une ville de ce côté à environ une heure de marche."
     "Marc regarde Tristan retourner dans la forêt"
-    scene foret_sombre at background
+    scene foret_sombre at foretdark
     with Dissolve(.5)
     show selenemask at pos_perso
     show tristan at pos_perso2
@@ -472,7 +474,7 @@ label sortir_village:
     A2 "Non, c'est pas ça je cherchais le fugi..."
     "Pan!"
     "Marc voit Tristan se faire abattre froidement d'un simple coup de feu."
-    scene foret_sombre at background
+    scene foret_sombre at foretdark
     with Dissolve(.5)
     show marccc at pos_perso1
     M "Noooon, Tristaaaaan!"
@@ -484,7 +486,7 @@ label sortir_village:
             jump fuite
 
 label fuite:
-    scene foret_sombre at background
+    scene foret_sombre at foretdark
     with Dissolve(.5)
     show marccc at pos_perso
     M "Je suis désolé Tristan, je n'ai pas le courage d'y retourner pour te venger."
@@ -494,10 +496,10 @@ label fuite:
     return
 
 label reprendre_mission:
-    scene foret_sombre at background
+    scene foret_sombre at foretdark
     with Dissolve(.5)
     M_shout "Non! Tristan est mort à cause de moi. Je dois le venger, je ne pourrais plus me regarder dans la glace sinon."
-    scene baladeforet at background
+    scene baladeforet at foretdark
     with Dissolve(.5)
     M "Je vais retourner à la cabane de Tristan, Je ne peux pas laisser mes émotions me contrôler."
     scene bureau
