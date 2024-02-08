@@ -83,8 +83,9 @@ transform backgroundvillage:
 transform backgroundsacrifice:
     xzoom 1.5 yzoom 1.5
 transform backgroundforet:
-    xzoom 1.8 yzoom 1.5
+    xzoom 2 yzoom 1.5
 init:
+    $ piece_trouve = False
     $ cle_trouve = False
     $ open = False
     $ nbr_forcage = 0
@@ -218,7 +219,7 @@ label pas_blesse:
     jump balade_foret
 
 label balade_foret:
-    scene baladeforettt at background
+    scene baladeforettt at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso 
     M "Bon, je prend quel chemin maintenant."
@@ -500,19 +501,27 @@ label fuite:
 label reprendre_mission:
     scene foret_sombre at backgroundforet
     with Dissolve(.5)
+    show marccc at pos_perso
     M_shout "Non! Tristan est mort à cause de moi. Je dois le venger, je ne pourrais plus me regarder dans la glace sinon."
-    scene baladeforet at backgroundforet
+    scene baladeforettt at backgroundforet
     with Dissolve(.5)
+    show marccc at pos_perso
     M "Je vais retourner à la cabane de Tristan, Je ne peux pas laisser mes émotions me contrôler."
     scene bureau
     with Dissolve(.5)
+    show marccc at pos_perso
+    show SecteF at pos_perso1
+    show SecteM at pos_perso2
     secte_shout "Le fugitif est là-bas!"
     M "Il faut que je me dépêche de rentrer"
     jump minijeux_serrure
+
 label minijeux_serrure:
     jump fouiller_cabane_fuite
 
 label fouiller_cabane_fuite:
+    scene bureau with Dissolve(.5)
+    show marccc at pos_perso
     M "Tristan a sûrement laissé des infos cachées ici."
     menu:
         "Il doit y avoir des infos ici"
@@ -535,12 +544,14 @@ label lit_fouille:
     with Dissolve(.5)
     "Marc cherche sous le matelas."
     $ cle_trouve = True
-    "Parfait, la clé. C'est sûrement celle du tiroir de son bureau."
+    show marccc at pos_perso
+    M "Parfait, la clé. C'est sûrement celle du tiroir de son bureau."
     jump fouiller_cabane_fuite
 
 label tiroir_fouille:
     scene bureau 
     with Dissolve(.5)
+    show marccc at pos_perso
     M "OK. Qu'est-ce qu'on a là dedans?"
     "Marc ouvre le tiroir."
     "Il trouve un journal et une pièce talkie-walkie."
@@ -554,8 +565,9 @@ label tiroir_fouille:
     jump voir_maire
 
 label voir_maire:
-    scene maisonmaire at background
+    scene maisonmaire
     with Dissolve(.5)
+    show marccc at pos_perso
     M "OK. Il est 7h30, il ne me reste plus beaucoup de temps."
     M "Il faut que je me dépêche de retrouver la pièce du talkie-walkie."
     #chrono 
@@ -572,8 +584,10 @@ label trouve_a_temps:
         jump info_eglise
 
 label trouve_pas_a_temps:
-    scene maisonmaire at background
+    scene maisonmaire
     with Dissolve(.5)
+    show juliannn at pos_perso2
+    show marccc at pos_perso
     C "Qu'est ce que vous faites chez moi Marc ?!"
     M "Mince, je n'ai pas réussi à trouver la pièce à temps"
     C "Venez tous ici! J'ai retrouvé le fugitif!"
@@ -581,14 +595,15 @@ label trouve_pas_a_temps:
     jump voir_maire
 
 label se_cacher:
-    scene maisonmaire at background
+    scene maisonmaire
     with Dissolve(.5)
+    show marccc at pos_perso
     M "Je l'ai trouvé, il me reste plus qu'à aller chercher la dernière."
     "La porte de l'entrée s'ouvre brusquement."
     M_whisper "Mince, il est déjà là, il faut que je sorte sans faire de bruit. Il ne faut pas qu'il ne me remarque."
     if policier_mort :
         menu:
-            "Où vais-je me cacher?"
+            M_whisper "Où vais-je me cacher?"
             "Se cacher sous le lit":
                 jump reussi_cacher
             "Sortir par la fenêtre":
@@ -597,28 +612,38 @@ label se_cacher:
         jump info_eglise
 
 label reussi_cacher:
-    scene maisonmaire at background
+    scene maisonmaire
     with Dissolve(.5)
+    show secteM at pos_perso1
+    show secteF at pos_perso2
     secte_shout "Le fugitif s'est infiltré dans la maison du maire! Retrouvez-le avant qu'il en sorte!"
     "Après de longues minutes d'agitation, les personnes masquées sortent de la maison pour chercher aux alentours"
+    scene entreevillageee at backgroundvillage
+    with Dissolve(.5)
+    show marccc at pos_perso
     M "J'ai le morceau que je cherchais."
     M "Il faut que j'aille chercher la dernière pièce"
     jump eglise
 
 label pas_reussi_cacher:
     scene maisonmaire
+    show marccc at pos_perso
     "Marc se dirige discrètement vers la fenêtre et essaie de l'ouvrir."
     M "Merde, elle ne s'ouvre pas. Qu'est-ce que je vais faire."
+    show secteF at pos_perso1
+    show secteM at pos_perso2
     secte_shout "Il est là! Tuez-le!"
     "Les personnes masquées se jettent sur Marc et le frappent à mort."
     jump se_cacher
 
 label eglise:
-    scene entreevillage at backgroundvillage
+    scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     "Marc arrive dans l'Église."
     scene eglisee at background
     with Dissolve(.5)
+    show marccc at pos_perso
+    show Tristan at pos_perso1
     M "Il faut que je trouve le dernier morceau du talkie-walkie et je pourrai contacter la police."
     "Il aperçoit le dernier morceau à droite de l'hôtel."
     M "Ah! le voilà."
@@ -633,7 +658,7 @@ label eglise:
     jump puzzle
 
 label puzzle:
-    "Il me faut résoudre ce puzzle pour passer. Je ne dois pas traîner, ils ne tarderont pas à arriver ici"
+    M "Il me faut résoudre ce puzzle pour passer. Je ne dois pas traîner, ils ne tarderont pas à arriver ici"
     if policier_mort:
         jump donjon_rexma_mal
     else:
@@ -642,6 +667,8 @@ label puzzle:
 label donjon_rexma_mal:
     scene donjonnn at background
     with Dissolve(.5)
+    show marccc at pos_perso
+    show juliannn at pos_perso2
     M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituels!"
     C_shout "Marc! Mais quelle surprise que je te retrouve ici."
     C_shout "Tu t'es bien caché, mais maintenant c'est fini! Tu ne peux plus t'échapper! Tu ne peux plus te cacher!"
@@ -657,6 +684,9 @@ label donjon_rexma_mal:
 label donjon_rexma_bien:
     scene donjonnn at background
     with Dissolve(.5)
+    show marccc at pos_perso
+    show Tristan at pos_perso1
+    show juliannn at pos_perso2
     M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituel!"
     A2 "Exactement! C'est ici qu'ils font leurs rituels."
     C_shout "Marc! Tristan Mais quelle surprise que de vous retrouver ici."
@@ -674,10 +704,13 @@ label donjon_rexma_bien:
 label fin_2_bien:
     scene donjonnn at background
     with Dissolve(.5)
+    
     "Julian se rapprocha de Marc et lui assena un coup de couteau rapide."
     "Tristan dégaina un pistolet et tira deux fois sur Julian." 
     "Pan! Pan!"
     "Julian, abattu, s'écroula sur le sol"
+    show marcccsang at pos_perso1
+    show Tristan at pos_perso
     "Les sirènes des voitures de police se firent entendre."
     "Quand la police arriva sur les lieux, tous les bâtiments avaient brûlé."
     "Les policiers ont ammené Marc à l'hôpital et il fût soigner."
@@ -691,6 +724,8 @@ label fin_3_mal:
     "Marc se jetta sur le Joyeux"
     "Julian évita Marc d'un simple mouvement fluide et précis"
     "Sélène, cachée dans l'ombre de la porte apparaît et décapita Marc avec une Hache à deux mains."
+    show juliannn at pos_perso
+    show Selene at pos_perso1
     C "Au final, tu as été le plus fou de nous deux a croire que tu pouvais nous combattre."
     "Les sirènes des voitures de police se firent entendrent."
     C "J'ai encore le temps de m'en aller. Tu n'auras donc servi à rien. Tu n'as causé que destruction et violence, jeune pêcheur."
@@ -699,8 +734,10 @@ label fin_3_mal:
     return
 
 label info_eglise:
-    scene entreevillage at backgroundvillage
+    scene entreevillageee at backgroundvillage
     with Dissolve(.5)
+    show marccc at pos_perso
+    show Tristan at pos_perso1
     A2 "Marc, viens."
     M "Oui?"
     A2 "Il ne nous reste qu'à trouver le dernier morceau du talkie-walkie."
@@ -708,8 +745,10 @@ label info_eglise:
     M "Et s'ils nous trouvent avant qu'on les appelle ?"
     A2 "J'ai fait diversion pour nous laisser le temps de le trouver."
     "Marc et Tristan arrivent dans l'Église."
-    scene eglisee at background 
+    scene egliseee at background 
     with Dissolve(.5)
+    show marccc at pos_perso
+    show Tristan at pos_perso1
     M "Il faut qu'on trouve le dernier morceau du talkie-walkie et nous pourrons contacter la police."
     "Il aperçoit le dernier morceau à droite de l'hôtel."
     M "Ah! Le voilà."
