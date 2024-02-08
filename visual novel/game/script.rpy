@@ -73,7 +73,7 @@ transform pos_inv18:
 transform zoom_corde:
     xzoom .5 yzoom.5
 transform pos_sac:
-    xzoom .1 yzoom .1
+    xzoom .2 yzoom .2
     xpos .0 ypos .1
 
 transform background:
@@ -266,8 +266,8 @@ label fuite_cabane:
     show marccc at pos_perso
     M_whisper "Je vais me cacher sous le lit."
     scene lit 
-    show tristanmask at pos_perso1
-    show selenemask at pos_perso2
+    show secteee2 at pos_perso1
+    show secteee1 at pos_perso2
     secte_shout "Bon! Il ne doit pas être ici. Continuez de fouiller la forêt!"
     "Marc est soulagé et s'évanouit."
     jump reveil_cabane
@@ -514,8 +514,8 @@ label reprendre_mission:
     scene bureau
     with Dissolve(.5)
     show marccc at pos_perso
-    show SecteF at pos_perso1
-    show SecteM at pos_perso2
+    show secteee2 at pos_perso1
+    show secteee1 at pos_perso2
     secte_shout "Le fugitif est là-bas!"
     M "Il faut que je me dépêche de rentrer"
     jump minijeux_serrure
@@ -576,7 +576,7 @@ label voir_maire:
     M "Il faut que je me dépêche de retrouver la pièce du talkie-walkie."
     #chrono 
     #il faut fouiller la maison du maire *
-    if piece_trouve:
+    if not piece_trouve:
         jump trouve_a_temps
     else:
         jump trouve_pas_a_temps
@@ -595,6 +595,7 @@ label trouve_pas_a_temps:
     C "Qu'est ce que vous faites chez moi Marc ?!"
     M "Mince, je n'ai pas réussi à trouver la pièce à temps"
     C "Venez tous ici! J'ai retrouvé le fugitif!"
+    scene game_over with Dissolve(.5)
     "Les personnes masquées se jettent sur Marc et le frappent à mort."
     jump voir_maire
 
@@ -634,8 +635,8 @@ label pas_reussi_cacher:
     show marccc at pos_perso
     "Marc se dirige discrètement vers la fenêtre et essaie de l'ouvrir."
     M "Merde, elle ne s'ouvre pas. Qu'est-ce que je vais faire."
-    show secteF at pos_perso1
-    show secteM at pos_perso2
+    show secteee2 at pos_perso1
+    show secteee1 at pos_perso2
     secte_shout "Il est là! Tuez-le!"
     "Les personnes masquées se jettent sur Marc et le frappent à mort."
     jump se_cacher
