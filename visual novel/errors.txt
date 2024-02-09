@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label puzzle is defined twice, at File "game/script.rpy", line 383:
-label puzzle:
-and File "game/script.rpy", line 402:
-label puzzle:
-
+File "game/script.rpy", line 37: expecting name after dot.
+    xpos 1850 ypos .2.5
+                      ^
 
 Ren'Py Version: Ren'Py 8.2.0.24012702
-Wed Feb  7 11:52:14 2024
+Fri Feb  9 10:47:16 2024

@@ -34,47 +34,24 @@ transform pos_perso1:
 transform pos_perso2:
     xpos 0.75 ypos .2 
 transform pos_inv1:
-    xpos 0.155 ypos .2
+    xpos 1850 ypos 260
 transform pos_inv2:
-    xpos 0.27 ypos .2
+    xpos 1850 ypos 365
 transform pos_inv3:
-    xpos 0.385 ypos .2
+    xpos 1850 ypos 470
 transform pos_inv4:
-    xpos 0.5 ypos .2
+    xpos 1850 ypos 575
 transform pos_inv5:
-    xpos 0.615 ypos .2
-transform pos_inv6:
-    xpos 0.73 ypos .2
-transform pos_inv7:
-    xpos 0.155 ypos .4
-transform pos_inv8:
-    xpos 0.27 ypos .4
-transform pos_inv9:
-    xpos 0.385 ypos .4
-transform pos_inv10:
-    xpos 0.5 ypos .4
-transform pos_inv11:
-    xpos 0.615 ypos .4
-transform pos_inv12:
-    xpos 0.73 ypos .4
-transform pos_inv13:
-    xpos 0.155 ypos .6
-transform pos_inv14:
-    xpos 0.27 ypos .6
-transform pos_inv15:
-    xpos 0.385 ypos .6
-transform pos_inv16:
-    xpos 0.5 ypos .6
-transform pos_inv17:
-    xpos 0.615 ypos .6
-transform pos_inv18:
-    xpos 0.73 ypos .6
+    xpos 1850 ypos 680
+
 
 transform zoom_corde:
     xzoom .5 yzoom.5
 transform pos_sac:
     xzoom .2 yzoom .2
-    xpos .0 ypos .1
+    xpos 1810 ypos .1
+transform pos_inv:
+    xpos 1810 ypos 220
 
 transform background:
     xzoom 1.25 yzoom 1.3
@@ -109,7 +86,6 @@ init python:
     inventaire = [kit_soin]
 
 
-# Le jeu commence ici
 label start:
     scene avion at background 
     with Dissolve(.5)
@@ -117,12 +93,12 @@ label start:
     show screen sac
     "On approche du site."
     show marccc at pos_perso
-    com_shout "Bon, Marc! Tu es prêt, on arrive bientôt sur site, tu vas pouvoir sauter"
+    com_shout "Bon, Marc ! Tu es prêt ? On arrive bientôt sur site, tu vas pouvoir sauter"
     show marccc at pos_perso
     M_shout "OK! Souhaite-moi bonne chance!"
     com_shout "Bonne chance! Atterris pas dans un arbre! Ah ah!"
     show marccc at pos_perso
-    M_whisper "C'est ça! Prend-moi pour un débutant tant que tu y es!"
+    M "C'est ça! Prend-moi pour un débutant tant que tu y es!"
     scene parachute at background
     with Dissolve(.5)
     $ renpy.pause(5.0, hard=True)
@@ -130,9 +106,9 @@ label start:
     with Dissolve(.5)
     show marccc at pos_perso
     M "Et merde! J'aurai du plus écouter le pilote quand il m'a dit que c'était dangereux de planer par ici."
-    "Remarque qu'il y a des gens autours d'un feu de camp en contrebas."
+    "Remarque qu'il y a des gens autour d'un feu de camp en contrebas."
     show marccc at pos_perso
-    M_whisper "Tiens. On ne m'avait pas dit que la forêt était inhabité?"
+    M_whisper "Tiens. On ne m'avait pas dit que la forêt était inhabitée ?"
     scene sacrifice at backgroundsacrifice
     with Dissolve(.5)
     M "Mais... Mais qu'est ce qu'il se passe là-bas?! Mais qu'est ce que... Il y a quelqu'un dans le feu ?!"
@@ -152,7 +128,7 @@ label start:
     show screen noeud10
 
     show screen countdown 
-    $ renpy.pause(5.0, hard=True)
+    $ renpy.pause(6.0, hard=True)
     
     
     if noeud_clique<1:
@@ -173,7 +149,7 @@ label pendaison:
 label QTE_reussi:
     scene sacrifice at backgroundsacrifice
     with Dissolve(.5)
-    "Le rituel se finit et les personnes masquées partent sans avoir remarqués Marc."
+    "Le rituel se finit et les personnes masquées partent sans avoir remarqué Marc."
     scene branche 
     with Dissolve(.5)
     show marccc at pos_perso
@@ -193,11 +169,11 @@ label QTE_echoue:
     scene sacrifice at backgroundsacrifice
     with Dissolve(.5)
     "Crack!"
-    "Les personnes autours du feu remarquent Marc et commencent à courir vers lui."
+    "Les personnes autour du feu remarquent Marc et commencent à courir vers lui."
     show marccc at pos_perso
-    M_shout "Merde! Je n'arrive pas à me défaire de ce parachute, il faut que je parte de là en vitesse."
+    M_shout "Merde! Je n'arrive pas à me défaire de ce parachute. Il faut que je parte de là en vitesse."
     "Les personnes masquées se jettent sur Marc."
-    M_shout "Non! Arrêtez! Mais cassez-vous! Qu'est-ce que vous me voulez!"
+    M_shout "Non! Arrêtez! Mais cassez-vous! Qu'est-ce que vous me voulez ?!"
     "Marc s'évanouit."
     jump dans_la_cage
 
@@ -222,7 +198,7 @@ label balade_foret:
     scene baladeforettt at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso 
-    M "Bon, je prend quel chemin maintenant."
+    M "Bon, je prends quel chemin maintenant..."
     menu:
         "Que faites-vous ?"
         "Aller vers la cabane":        
@@ -249,7 +225,7 @@ label entrer_village:
     show marccc at pos_perso
     M "C'est un très beau village. Bon j'y vais."
     "Marc se rapproche et une alarme se déclenche directement."
-    M_shout "Mince! Une alarme! Il me faut fuire!"
+    M_shout "Mince! Une alarme! Il me faut fuir!"
     if blesse == True :
         jump capture_entree_village
     if blesse == False :
@@ -289,9 +265,9 @@ label cabane_rencontre_A:
     M "Disons que ça pourrait aller mieux, qu'est-ce qu'il se passe ici ?"
     A "Je vais vous en parler. Mais, tout d'abord, place aux présentations."
     show tristan at pos_perso2
-    A2 "Je m'appelle Tristan, je suis sergent de police et j'enquête sur la secte depuis 6 mois. Et vous, comment vous vous êtes retrouvé ici ?"
+    A2 "Je m'appelle Tristan, je suis sergent de police et j'enquête sur la secte depuis six mois. Et vous, comment vous vous êtes retrouvé ici ?"
     M "Je m'appelle Marc. J'ai fait du saut en parachute, et me suis retrouvé coincé ici après que mon parachute se soit coincé dans un arbre."
-    A2 "Très bien marc, je vais vous poser une simple question. J'ai assez d'éléments pour faire stopper les activités de la secte." 
+    A2 "Très bien Marc, je vais vous poser une simple question. J'ai assez d'éléments pour faire stopper les activités de la secte." 
     A2 "Mais il me manque les pièces de ma radio et je ne peux pas aller moi-même les chercher." 
     A2 "Accepteriez-vous de m'aider dans ma tâche ou souhaitez-vous que je vous aide à sortir de la forêt?"
     jump revelation_policier 
@@ -299,7 +275,7 @@ label cabane_rencontre_A:
 label cabane:
     scene lit 
     with Dissolve(.5)
-    "Il aperçoit une cabane isolée"
+    "Il aperçoit une cabane isolée."
     show marccc at pos_perso
     M "Tiens! Une cabane. Elle n'a pas l'air d'être habitée."
     M "Je vais essayer de me reposer un peu. Je vais me mettre sous le lit au cas où."
@@ -308,10 +284,10 @@ label cabane:
 label capture_entree_village:
     scene entreevillageee at backgroundvillage
     with Dissolve(.5)
-    "Marc se déplace lentement à cause de sa blessure"
+    "Marc se déplace lentement à cause de sa blessure."
     show marccc at pos_perso
     M_shout "Merde! Ils sont en train de me rattraper!"
-    "Il se fait attraper et s'évanouit"
+    "Il se fait attraper et s'évanouit."
     jump dans_la_cage
 
 label dans_la_cage:
@@ -322,10 +298,10 @@ label dans_la_cage:
     show marccc at pos_perso
     show juliannn at pos_perso2
     M "Qui...Qui êtes-vous ?! Qu'est-ce que vous me voulez ?!"
-    A3 "Oh, je suis bête. Je ne me suis pas présenté. Où sont mes bonnes manières!"
+    A3 "Oh, je suis bête. Je ne me suis pas présenté. Où sont mes bonnes manières ?!"
     C "Je m'appelle Julian. Je suis le Joyeux de cette magnifique communauté."
     M "Le gourou de cette secte plutôt!"
-    C "Attention à votre langage jeune homme. Tant que je reste aimable"
+    C "Attention à votre langage jeune homme. Tant que je reste aimable."
     M_shout "\"Aimable\"! Ne me faite pas rire! Vous m'avez kidnappé et enfermé, bande de dégénérés!"
     C "Malheureusement, vous avez vu des choses que vous n'auriez jamais dû voir."
     C "Nous ne pouvons pas vous laisser partir. Ne vous en faites pas, votre sort ne sera pas différent de ce que vous avez vu."
@@ -360,8 +336,8 @@ label forcer_cage:
     M "La cage ne m'a pas l'air bien solide. Je vais essayer de sortir en forçant la serrure."
     "Marc secoue la porte de sa cage avec toute sa force."
     show selenemask at pos_perso2
-    B "Eh toi! Qu'es-ce que tu essaies de faire!"
-    M "Mince, On m'a vu, je ne pourrais pas sortir."
+    B "Eh toi! Qu'est-ce que tu essaies de faire!"
+    M "Mince, on m'a vu... Je ne pourrais pas sortir."
     if nbr_forcage==2:
         jump mort_cage
     else:
@@ -389,7 +365,8 @@ label fouiller_cage:
     M "Si j'arrive à récupérer les autres morceaux de la pince, je devrais réussir à couper le cadenas"
     menu:
         "Que faites-vous?"
-        #"Continuer de fouiller la cage":
+        "Continuer de fouiller la cage":
+            $ nbr_morceaux_mince +=1
         "Sortir de la cage": #a chaque tour tu proposes si il  veut fouiller la cage ou en sortir, il doit trouver 3 piece de pince, s'il a les 3 alors tu fais pop un mess qui dit qu'il a les 3 et qu'il peux sortir tu l'envoie dans pince reussi, s'il a pas les 3 et qu'il veux sortir tu l'envoies dans pinceechoué  
             if nbr_morceaux_mince ==3:
                 jump pince_reussi
@@ -420,9 +397,9 @@ label pince_reussi:
     jump cabane_rencontre_A
 
 label mettre_masque:
-    scene entreevillageee at Dissolve(.5)
+    scene entreevillageee at backgroundvillage
     show marccc at pos_perso
-    show TristanMask at pos_perso2
+    show tristanmask at pos_perso2
     "L'homme masqué tend un masque a Marc."
     A " Enfilez ça et ne vous éloignez pas."
     jump cabane_rencontre_A
@@ -450,7 +427,7 @@ label demanteler_secte:
     A2 "Pour eux, Rexma est l'élu divin, et son retour ne sera possible qu'après 2009 sacrifices."
     M " 2009 ! mais pourquoi autant de meurtres ?"
     A2 "Même moi je ne le sais pas. Il n'y a que le chef surnommé \"Le Joyeux\" qui sait pourquoi."
-    # trouve le medkit
+    $ inventaire.append(kit_soin)
     jump voir_maire
     
 
@@ -488,7 +465,7 @@ label sortir_village:
     M "Noooon, Tristaaaaan!"
     menu:
         "Qu'est-ce que je vais faire?!"
-        "Reprendre la mission du GOAT Tristan":
+        "Reprendre la mission de Tristan":
             jump reprendre_mission
         "Fuir":
             jump fuite
@@ -737,7 +714,7 @@ label fin_3_mal:
     C "J'ai encore le temps de m'en aller. Tu n'auras donc servi à rien. Tu n'as causé que destruction et violence, jeune pêcheur."
     "Quand la police arriva sur les lieux, tous les bâtiments avaient brûlé."
     "Il ne restait que des cendres. Et faute de preuve l'affaire de la forêt fût classée sans suite."
-    return
+    jump fin_mort
 
 label info_eglise:
     scene entreevillageee at backgroundvillage
@@ -754,7 +731,7 @@ label info_eglise:
     scene egliseee at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso
-    show Tristan at pos_perso1
+    show tristan at pos_perso1
     M "Il faut qu'on trouve le dernier morceau du talkie-walkie et nous pourrons contacter la police."
     "Il aperçoit le dernier morceau à droite de l'hôtel."
     M "Ah! Le voilà."
@@ -768,6 +745,9 @@ label info_eglise:
     M_whisper "Il y a une porte de ce côté, nous devrions nous cacher par là."
     A2 "Oui, allons-y"
     jump puzzle
+
+label fin_mort:
+    scene game_over
 
 
 
@@ -834,7 +814,7 @@ screen noeud10:
         at pos_inv10
 
 screen inventory:
-    image "inventory.png" at truecenter
+    image "inventory.png" at pos_inv
     if len(inventaire)!=0 : 
         image inventaire[0].getPNG() at pos_inv1
 
