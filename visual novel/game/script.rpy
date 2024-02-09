@@ -264,7 +264,7 @@ label cabane_rencontre_A:
     A "Voici mon repère jeune homme, comment vous vous sentez ?"
     M "Disons que ça pourrait aller mieux, qu'est-ce qu'il se passe ici ?"
     A "Je vais vous en parler. Mais, tout d'abord, place aux présentations."
-    show tristan at pos_perso2
+    show tristannn at pos_perso2
     A2 "Je m'appelle Tristan, je suis sergent de police et j'enquête sur la secte depuis six mois. Et vous, comment vous vous êtes retrouvé ici ?"
     M "Je m'appelle Marc. J'ai fait du saut en parachute, et me suis retrouvé coincé ici après que mon parachute se soit coincé dans un arbre."
     A2 "Très bien Marc, je vais vous poser une simple question. J'ai assez d'éléments pour faire stopper les activités de la secte." 
@@ -437,7 +437,7 @@ label sortir_village:
     scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     show marccc at pos_perso
-    show tristan at pos_perso2
+    show tristannn at pos_perso2
     M "Je veux m'en aller de cette forêt. Je n'en peux plus. Je veux retourner chez moi"
     A2 "Ne t'en fais pas, je comprends. Je vais t'accompagner jusqu'à la route la plus proche"
     A2 "Ils ont posé plusieurs pièges pour empêcher les victimes de s'enfuir."
@@ -445,7 +445,7 @@ label sortir_village:
     scene foret_sombre at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso
-    show tristan at pos_perso2
+    show tristannn at pos_perso2
     A2 "Nous nous séparons donc ici. Rentre bien chez toi, mon ami."
     M "Merci Tristan, je te dois la vie, je ne pourrais jamais assez te remercier. Je m'en veux de te laisser ici mais je n'en peux plus. Je te souhaite bonne chance."
     A2 "Il y a une ville de ce côté à environ une heure de marche."
@@ -453,7 +453,7 @@ label sortir_village:
     scene foret_sombre at backgroundforet
     with Dissolve(.5)
     show selenemask at pos_perso
-    show tristan at pos_perso2
+    show tristannn at pos_perso2
     A_shout "Qu'est-ce que tu fais là toi! Ne me dis pas que tu essayais de t'enfuir!"
     A2 "Non, c'est pas ça je cherchais le fugi..."
     "Pan!"
@@ -668,7 +668,7 @@ label donjon_rexma_bien:
     scene donjonnn at background
     with Dissolve(.5)
     show marccc at pos_perso
-    show tristan at pos_perso1
+    show tristannn at pos_perso1
     M "Qu'est-ce que c'est que cette pièce! On dirait une salle de rituel!"
     A2 "Exactement! C'est ici qu'ils font leurs rituels."
     show juliannn at pos_perso2
@@ -693,7 +693,7 @@ label fin_2_bien:
     "Pan! Pan!"
     "Julian, abattu, s'écroula sur le sol"
     show marcccsang at pos_perso1
-    show tristan at pos_perso
+    show tristannn at pos_perso
     "Les sirènes des voitures de police se firent entendre."
     "Quand la police arriva sur les lieux, tous les bâtiments avaient brûlé."
     "Les policiers ont ammené Marc à l'hôpital et il fût soigner."
@@ -720,7 +720,7 @@ label info_eglise:
     scene entreevillageee at backgroundvillage
     with Dissolve(.5)
     show marccc at pos_perso
-    show tristan at pos_perso1
+    show tristannn at pos_perso1
     A2 "Marc, viens."
     M "Oui?"
     A2 "Il ne nous reste qu'à trouver le dernier morceau du talkie-walkie."
@@ -731,7 +731,7 @@ label info_eglise:
     scene egliseee at backgroundforet
     with Dissolve(.5)
     show marccc at pos_perso
-    show tristan at pos_perso1
+    show tristannn at pos_perso1
     M "Il faut qu'on trouve le dernier morceau du talkie-walkie et nous pourrons contacter la police."
     "Il aperçoit le dernier morceau à droite de l'hôtel."
     M "Ah! Le voilà."
