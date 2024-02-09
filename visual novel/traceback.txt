@@ -1,61 +1,68 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 427, in script
-    "L'homme masqué tend un masque a Marc."
-AttributeError: 'NoneType' object has no attribute 'style'
+  File "game/script.rpy", line 131, in script
+    $ renpy.pause(6.0, hard=True)
+  File "game/script.rpy", line 131, in <module>
+    $ renpy.pause(6.0, hard=True)
+  File "game/script.rpy", line 790, in execute
+    screen noeud6:
+  File "game/script.rpy", line 790, in execute
+    screen noeud6:
+  File "game/script.rpy", line 791, in execute
+    imagebutton:
+  File "game/script.rpy", line 791, in keywords
+    imagebutton:
+  File "game/script.rpy", line 794, in <module>
+    at pos_inv6
+NameError: name 'pos_inv6' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 427, in script
-    "L'homme masqué tend un masque a Marc."
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 2557, in execute
-    Say.execute(self)
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 615, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\exports.py", line 1493, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\character.py", line 1391, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\character.py", line 1042, in do_display
-    display_say(who,
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\character.py", line 738, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\ui.py", line 301, in interact
+  File "game/script.rpy", line 131, in script
+    $ renpy.pause(6.0, hard=True)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ast.py", line 823, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\python.py", line 1178, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 131, in <module>
+    $ renpy.pause(6.0, hard=True)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\exports.py", line 1661, in pause
+    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward, pause=delay, pause_modal=modal)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\ui.py", line 301, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\display\core.py", line 2165, in interact
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\core.py", line 2165, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\display\core.py", line 2814, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\display\core.py", line 1352, in draw_screen
-    surftree = renpy.display.render.render_screen(
-  File "render.pyx", line 486, in renpy.display.render.render_screen
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\display\layout.py", line 900, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\display\layout.py", line 900, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\display\layout.py", line 900, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\display\transform.py", line 957, in render
-    return RenderTransform(self).render(width, height, st, at)
-  File "accelerator.pyx", line 978, in renpy.display.accelerator.RenderTransform.render
-  File "accelerator.pyx", line 413, in renpy.display.accelerator.RenderTransform.render_child
-  File "render.pyx", line 260, in renpy.display.render.render
-  File "C:\Users\t.chauveau\Desktop\renpy-8.2.0-sdk\renpy\display\transition.py", line 384, in render
-    top = render(self.new_widget, width, height, st, at)
-  File "render.pyx", line 170, in renpy.display.render.render
-  File "render.pyx", line 222, in renpy.display.render.render
-AttributeError: 'NoneType' object has no attribute 'style'
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\core.py", line 2683, in interact_core
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\displayable.py", line 431, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\displayable.py", line 431, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\displayable.py", line 431, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\screen.py", line 480, in visit_all
+    callback(self)
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\core.py", line 2683, in <lambda>
+    root_widget.visit_all(lambda d : d.per_interact())
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\screen.py", line 491, in per_interact
+    self.update()
+  File "C:\Users\game\Desktop\renpy-8.2.0-sdk\renpy\display\screen.py", line 697, in update
+    self.screen.function(**self.scope)
+  File "game/script.rpy", line 790, in execute
+    screen noeud6:
+  File "game/script.rpy", line 790, in execute
+    screen noeud6:
+  File "game/script.rpy", line 791, in execute
+    imagebutton:
+  File "game/script.rpy", line 791, in keywords
+    imagebutton:
+  File "game/script.rpy", line 794, in <module>
+    at pos_inv6
+NameError: name 'pos_inv6' is not defined
 
 Windows-10-10.0.19045 AMD64
 Ren'Py 8.2.0.24012702
 visual novel 1.0
-Fri Feb  9 09:47:32 2024
+Fri Feb  9 11:29:36 2024

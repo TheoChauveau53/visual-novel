@@ -44,6 +44,8 @@ transform pos_inv4:
 transform pos_inv5:
     xpos 1850 ypos 680
 
+transform pos_lime:
+    xpos 1500 ypos 700
 
 transform zoom_corde:
     xzoom .5 yzoom.5
@@ -791,27 +793,27 @@ screen noeud6:
     imagebutton:
         idle "noeud.png"
         action [Hide("noeud6"),SetVariable("noeud_clique", noeud_clique+1)]
-        at pos_inv6
+        at pos_sac
 screen noeud7:
     imagebutton:
         idle "noeud.png"
         action [Hide("noeud7"),SetVariable("noeud_clique", noeud_clique+1)]
-        at pos_inv7
+        at pos_perso
 screen noeud8:
     imagebutton:
         idle "noeud.png"
         action [Hide("noeud8"),SetVariable("noeud_clique", noeud_clique+1)]
-        at pos_inv8
+        at pos_perso1
 screen noeud9:
     imagebutton:
         idle "noeud.png"
         action [Hide("noeud9"),SetVariable("noeud_clique", noeud_clique+1)]
-        at pos_inv9
+        at pos_perso2
 screen noeud10:
     imagebutton:
         idle "noeud.png"
         action [Hide("noeud10"),SetVariable("noeud_clique", noeud_clique+1)]
-        at pos_inv10
+        at pos_sac
 
 screen inventory:
     image "inventory.png" at pos_inv
